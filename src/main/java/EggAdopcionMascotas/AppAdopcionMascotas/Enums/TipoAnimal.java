@@ -7,11 +7,15 @@ public enum TipoAnimal {
     private String nombre;
 
     private TipoAnimal(String nombre) {
+
         this.nombre = nombre;
+
     }
 
     public String getNombre() {
+
         return nombre;
+
     }
 
 }
