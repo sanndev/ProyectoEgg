@@ -55,12 +55,12 @@ async function cargarMascotas(offset,limit){
 
   for(let mascota of mascotas){  
 
+    spinner.style.display = "block";
+
     var i = mascota.id;
 
     if(i >= offset && i<=limit){
             
-        spinner.style.display = "block";
-
         console.log(mascota);
 
         const col = document.createElement('div')
@@ -91,13 +91,13 @@ async function cargarMascotas(offset,limit){
 
         const boton1 = document.createElement('a')
         boton1.className = "btn btn-primary"
-        boton1.textContent = "Adoptar"
+        boton1.textContent = "Leer Mas"
 
-        const boton2 = document.createElement('a')
-        boton2.className = "btn btn-primary ms-2"
-        boton2.textContent = "Sobre Mi"
+        //const boton2 = document.createElement('a')
+        //boton2.className = "btn btn-primary ms-2"
+        //boton2.textContent = "Sobre Mi"
 
-        botonesInterno.append(boton1,boton2)
+        botonesInterno.append(boton1)
 
         botones.append(botonesInterno)
 
