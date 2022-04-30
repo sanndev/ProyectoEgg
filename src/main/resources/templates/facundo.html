@@ -19,59 +19,34 @@
 
 <body>
 
-    <header>
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom" id="menu-var">
-
-            <a class="navbar-brand m-1" href="index.html"><img src="img/icono.png" alt="icono"><span class="text-primary fs-5 fw-bold"></span></a>
-        
-            <button class="navbar-toggler m-1" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-
-            </button>
-          
-            <div class="collapse navbar-collapse m-1" id="menu">
+            <a class="navbar-brand icono" href="index.html"><img src="img/icono.png" alt="icono"></a>
+    
+            <ul class="nav col-18 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 
-              <ul class="navbar-nav">
-    
-                <li class="nav-item">
-    
-                  <a class="nav-link" href="sobre-nosotros.html"><img  class="me-1" width="24px" height="24px" src="img/home.png" alt="">Sobre Nosotros</a>
-    
-                </li>
-    
-                <li class="nav-item">
-    
-                  <a class="nav-link active" href="index.html"><img  class="me-1" width="24px" height="24px" src="img/mascota.png" alt="">Mascotas</a>
-    
-                </li>
-    
-                <li class="nav-item">
-    
-                    <a class="nav-link" href="agregar-mascota.html"><img  class="me-1" width="24px" height="24px" src="img/mascota.png" alt="">Carga Tu Mascota</a>
-      
-                </li>
-
-                <li class="nav-item">
-    
-                  <a class="nav-link" href="blog.html"><img  class="me-1" width="24px" height="24px" src="img/blog.png" alt="">Blog</a>
-    
-              </li>
-    
-                <li class="nav-item">
-    
-                    <a class="nav-link" href="contactos.html"><img  class="me-1" width="24px" height="24px" src="img/contacto.png" alt="">Contacto</a>
-      
-                </li>
-    
+              <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+              <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+              <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+              <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+              <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+            </ul>
+            <div class="dropdown text-end">
+              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
               </ul>
-    
             </div>
-            
-        </nav>
-
-
-    </header>
+          </div>
+        </div>
+      </header>
 
     <div class="container text-center mt-3 mb-3">
 
@@ -166,7 +141,7 @@
 
     </div>
 
-    <div class="container d-flex justify-content-center w-100">
+    <div class="container d-flex justify-content-center  botones-tipo w-100">
 
         <div class="dropdown show mx-3">
             <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -234,8 +209,8 @@
 
             <ul class="pagination">
 
-                <li id="anterior" class="page-item"><a class="page-link" href="#">Anterior</a></li>
-                <li id="siguiente" class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+                <li id="anterior" class="page-item"><a class="page-link paginacion-botones text-white" href="#">Anterior</a></li>
+                <li id="siguiente" class="page-item"><a class="page-link paginacion-botones text-white" href="#">Siguiente</a></li>
 
             </ul>
 
@@ -245,11 +220,34 @@
 
     <!--FOOTER-->
 
-    <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+    <!--<footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
         <div class="container text-center">
           <small>Copyright &copy; Facundo Diaz</small>
         </div>
       </footer>
+
+    -->
+
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+              <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+            <span class="text-muted">© 2021 Company, Inc</span>
+          </div>
+      
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            
+            <!-- Saque la etiqueta SVG y puse una i {asi llamo a los iconos de boostrap bi-nombreDelIcono} -->
+            <li class="ms-3"><a class="text-muted" href="#"><i class="bi-twitter"></i></a></li> <!--twitter-->
+            <li class="ms-3"><a class="text-muted" href="#"><i class="bi-instagram"></i></use></svg></a></li> <!--instagram-->
+            <li class="ms-3"><a class="text-muted" href="#"><i class="bi-facebook"></i></use></svg></a></li> <!--facebook-->
+            <!----------------------------------------------------------------------------------------------->
+    
+          </ul>
+        </footer>
+      </div>
       
     <!--FIN FOOTER-->
 

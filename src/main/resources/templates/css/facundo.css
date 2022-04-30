@@ -4,6 +4,29 @@
 
 }
 
+.botones-cards{
+
+    background-color: #F36A6E !important;
+    border: 3px solid #F36A6E !important;
+    
+}
+
+
+.botones-tipo a{
+
+    background-color: #F36A6E !important;
+    border: 3px solid #F36A6E !important;
+    color: #FFFFFF !important;
+
+}
+
+.paginacion-botones{
+
+    background-color: #F36A6E !important;
+    border: 3px solid #F36A6E !important;
+    
+}
+
 .paso-1{
 
     width: 100%;

@@ -90,7 +90,7 @@ async function cargarMascotas(offset,limit){
         botonesInterno.className = "btn-group d-flex justify-content-center"
 
         const boton1 = document.createElement('a')
-        boton1.className = "btn btn-primary"
+        boton1.className = "btn btn-primary botones-cards"
         boton1.textContent = "Leer Mas"
 
         //const boton2 = document.createElement('a')
