@@ -42,38 +42,61 @@
     <!---------------------------------------------------------------------------------------------------------->
 
 
-    <h1 >Configuracion de la cuenta</h1>
-    
-    <div class="row mx-auto">
-      <div class="col-md-3">
-        <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+    <h1 class= "text-center mb-3">Configuracion de la cuenta</h1>
+    <div class= "container w-50 d-block border"> 
+      <div class="col-md-3 w-100 mb-3 mt-3">
+        <input type="text" class="form-control" placeholder="@nombre" aria-label="First name">
       </div>
-      <div class="col-md-3 mx-auto">
-        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+      <div class="col-md-3 w-100 mb-3" >
+        <input type="text" class="form-control  disabled" placeholder="@apellido" aria-label="Last name">
       </div>
-    
-    <form class="row g-3 mx-auto">
-      <div class="col-md-3">
+      <div class="col-md-3 w-100">
         <label for="inputEmail4" class="form-label">Email</label>
         <input type="email" class="form-control" id="inputEmail4">
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 w-100">
         <label for="inputPassword4" class="form-label">Password</label>
         <input type="password" class="form-control" id="inputPassword4">
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 w-100 mb-3">
         <label for="InputTel" class="form-label">Numero de Telefono</label>
         <input type="tel" class="form-control" id="InputTel" placeholder="381-xxx-xxx">
       </div>
-    </div>
-    </form>
-    <br>
-    <div class="d-grid gap-3 mx-auto">
-      <div class="p-2 bg-light border">Grid item 1</div>
-      <div class="p-2 bg-light border">Grid item 2</div>
-      <div class="p-2 bg-light border">Grid item 3</div>
-    </div>
+  </div>
+  <h2 class= "text-center mb-3 mt-3">Mis Mascotas</h2>
+  <div class= "container w-75 d-block border">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Tipo De Animal</th>
+          <th scope="col">Sexo</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Estado adopcion</th>
+          <th scope="col">Fecha de adopcion</th>
+          <th scope="col">Opciones</th>
 
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+          <td class="d-flex"><button type="button" class="btn btn-danger me-3">Eliminar</button>
+            <button type="button" class="me-3 btn btn-success">Ocultar</button>
+            <button type="button" class="me-3 btn btn-warning">Editar</button></td>         
+        </tr>
+        
+      </tbody>
+    </table>
+
+  </div>
 </body>
 <div class="container">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
