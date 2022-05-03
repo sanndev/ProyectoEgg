@@ -1,26 +1,18 @@
-/*--------------------------------------------------------------------- File Name: estilos.css ---------------------------------------------------------------------*/
+/*--------------------------------------------------------------------- Nombre archivo: estilos.css ---------------------------------------------------------------------*/
 
 
-/*--------------------------------------------------------------------- import Fonts ---------------------------------------------------------------------*/
+/*--------------------------------------------------------------------- Fuentes ---------------------------------------------------------------------*/
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=latin-ext');
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
-/*****---------------------------------------- 1) font-family: 'Rajdhani', sans-serif;
- 2) font-family: 'Poppins', sans-serif;
- ----------------------------------------*****/
+/*------------ 1) font-family: 'Rajdhani', sans-serif; 2) font-family: 'Poppins', sans-serif; ---------------*/
 
 
-/*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
-
-@import url(animate.min.css);
-@import url(normalize.css);
-@import url(meanmenu.css);
-@import url(slick.css);
-@import url(jquery-ui.css);
+/*--------------------------------------------------------------------- Archivos importados ---------------------------------------------------------------------*/
 @import url(nice-select.css);
 
-/*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
+/*--------------------------------------------------------------------- Atributos generales ---------------------------------------------------------------------*/
 
 * {
      box-sizing: border-box !important;
@@ -137,18 +129,16 @@ a {
      text-decoration: none;
      outline: none !important;
 }
-.container{
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 30px;
-}
-.col-sm-3{
-    /* width: 30%;
-    margin: 0 auto; */
-    margin-top: -20px;
-}
 
-/* Loader */
+/* Selección con color personalizado para todos los elementos de la página! */
+*::selection {
+    background: #f8d5c3;
+    color: #19535f;  
+  }
+
+/*--------------------------------------------------------------------- Atributos específicos ---------------------------------------------------------------------*/  
+
+/* ----------Loader---------- */
 
   /* #loader-container{
       position: absolute;
@@ -208,11 +198,60 @@ a {
     display: none;
 }
    */
-/*Comienzo estilos acordeón*/
+/* -----------Fin Loader-------------- */
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.col-sm-3{
+    /* width: 30%;
+    margin: 0 auto; */
+    margin-top: -20px;
+}
+
+
+/*----imagen png del gato----*/
+   .cat_img{
+	width: 100%; 
+	float: right;
+    padding: 20% ;
+}
+
+/*------ésta es la parte del texto--------*/
+.consejos_dar_adopcion{
+	width: 100%; 
+	float: right;
+	background-color: #ffffff;
+	height: auto;
+	padding-top: 0px;
+}
+
+.consejos_titulo{
+	width: 100%;
+	float: left;
+	font-size: 44pt;
+	color: #353434;
+    margin: auto;
+}
+
+.consejos_text {
+    width: 100%;
+    float: left;
+    font-size: 19pt;
+    color: #353434;
+    line-height: 30px;
+    margin-left: 0px;
+    padding-top: 30px;
+}
+
+/*---------------Comienzo estilos acordeón---------------*/
 .container2{
     width: 90%;
     margin: 0 auto;
     margin-top: 60px;
+    margin-bottom: 70px;
 }
 
 .container2 h2{
@@ -262,8 +301,14 @@ a {
 .active .fa-minus{
     display: block;
 }
+.fa-minus:before {
+    content: "\f068";
+}
 .active .fa-plus{
     display: none;
+}
+.fa-plus:before {
+    content: "\f067";
 }
 .accordion h5{
     font-size: 20px;
@@ -284,200 +329,142 @@ a {
     transition: all .5s ease-in;
     max-height: 0;
 }
-/*Fin estilos acordeón*/
+
+/*------------Fin estilos acordeón-----------------*/
 
 .banner_bt{
 	width: 55%;
 	float: left;
 }
 
-/* .layout_padding {
-    padding-bottom: 70px;
-    padding-top: 70px;
-}
-
-.touch_section{
-	width: 100%;
-	float: left;
-	background-image: url(C:\Users\LAURA\Desktop\Programacion Web\Programa TTEC\18-Proyecto final\ProyectoEgg\src\imágenes\450_1000.jpg);
-	height: auto;
-	padding-top: 55px;
-	background-size: 100%;
-    padding-bottom: 55px;
-
-}
-
-.gallery_main{
-	width: 100%;
-	float: left;
-	background-color:#f7941d;
-	height: auto;
-}
-
-.sed_text{
-	font-size: 19pt;
-    color: #060401;
-    text-align: right;
-    line-height: 40px;
-    width: 87%;
-    float: right;
-    margin-right: 0px;
-
-}
-
-.images{
-	margin-top: 20px;
-}
-
-.gallery_blog {
-  position: relative;
-  margin-top: 20px;
-}
-
-.image {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.overlay {
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  right: 0;
-  background-color: #ffffff;
-  overflow: hidden;
-  width: 100%;
-  height:0;
-  transition: .5s ease;
-}
-
-.gallery_blog:hover .overlay {
-    bottom: 0;
-    height: 100%;
-    opacity: 0.80;
-}
-
-.text {
-  color: #353434;
-  font-size: 20pt;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-} */
-/*ésta es la parte del texto*/
-.consejos_dar_adopcion{
-	width: 100%; 
-	float: right;
-	background-color: #ffffff;
-	height: auto;
-	padding-top: 0px;
-}
-
-.consejos_titulo{
-	width: 100%;
-	float: left;
-	font-size: 44pt;
-	color: #353434;
-    margin: auto;
-}
-
-.consejos_text {
-    width: 100%;
-    float: left;
-    font-size: 19pt;
-    color: #353434;
-    line-height: 30px;
-    margin-left: 0px;
-    padding-top: 30px;
-}
-
-/* . dog_bt{
-    width: 70%;
-    float: left;
-    background-color: #221e1f;
-    border-radius: 60px;
-    height: 80px;
-    font-size: 25pt;
-    border:0px;
-    color: #ffffff;
-    margin-top: 40px;
-
-}
-
-.box_3{
-	width: 100%;
-	float: left;
-	margin-top: 102px;
-}
- */
-.cat_img{
-	width: 100%; 
-	float: right;
-    padding: 20% ;
-}
-
-/* fondo2 sección*/
-/* .touch_section{
-	width: 100%;
-	float: left;
-	background-image: url(../images/form-adopcion.jpg);
-	height: auto;
-	padding-top: 55px;
-	background-size: 100%;
-    padding-bottom: 55px;
-
-} */
-
-/* .get_taital{
-	width: 100%;
-	float: left;
+/*-----Titulo formulario quité width: 80%------------*/
+.titulo_registro{
+	float: none;
 	text-align: center;
-	color: #f7941d;
-	font-size: 50pt;
+	color: #F36A6E;
+	font-size: 25pt;
     padding-bottom: 40px;
 
 }
 
-.email_box{
+/*--------- fondo sección formulario registro-----------*/
+.registro_seccion{
 	width: 100%;
 	float: left;
+	background-image: url(../imagenes/form-adopcion.jpg);
+	height: auto;
+	padding-top: 55px;
+	background-size: 100%;
+    padding-bottom: 55px;
+
+}
+/*--------caja del formulario de registro mascota-----*/
+.caja_registro{
+	width: 80%;
+    float: none;
 	background-color: #ffffff;
 	border-radius: 20px;
 	height: auto;
     padding: 50px 20px;
     opacity: 0.80;
-} */
-
-/* .email-bt {
+    margin: auto;
+    padding: 5px 10px 30px;
+}
+/*--------estilos generales formulario registro de mascota-----*/
+.nombre-mascota {
     border: 1px solid #000;
     color: #000000;
     width: 100%;
     height: 55px;
     font-size: 22px;
     padding: 20px;
-} */
+    margin-bottom: 5px;
+}
 
-/* .massage-bt {
-    border: 1px solid #000;
-    color: #000000;
+.lista-select {
+    border: 0px solid #000;
+    color: #3e3d3d;
     width: 100%;
-    height: 200px;
+    height: 55px;
     font-size: 22px;
-    padding: 70px 20px 10px 20px;}
+    padding: 0px;
+}
 
-.send_btn {
+.form-group {
+    margin-bottom: 2rem;
+}
+
+/*---------------- boton file --------------------*/
+#boton_file { 
+    padding: 18px; 
+    background: transparent; 
+    color: black; 
+    font-size: initial;
+    line-height: 1;
+  } 
+  #boton_file:hover { 
+    padding: 30px; 
+    background: transparent; 
+    background-color: -internal-light-dark(#F36A6E);
+    color: #F36A6E !important; 
+    cursor: #F36A6E;
+  } 
+  #boton_file:active { 
+    padding: 30px; 
+    background: transparent; 
+    color: white !important; 
+  } 
+  #boton_file:visited { 
+    padding: 30px; 
+    background: gray; 
+    color: white; 
+  } 
+
+ /* ----------- caja descripción------------------ */
+.descripcion-registro {
+    border: 1px solid #292929;
+    color: #292929;
+    width: 100%;
+    height: 100px;
+    font-size: 22px;
+    padding: 14px 14px 14px 14px;
+    line-height: normal ;
+}
+
+ /*----------  Boton registrar --------------------*/
+ #boton_send { 
+    padding: 0px; 
+    background: #F36A6E; 
+  } 
+  #boton_send:hover { 
+    padding: 0px; 
+    background: #ffc09f; 
+    background-color: -internal-light-dark(#F36A6E);
+    color: #F36A6E !important; 
+    cursor: #F36A6E;
+    border-color:#F36A6E;
+    border-width:2px;
+    border-style:solid;
+  } 
+  #boton_send:active { 
+    padding: 8px; 
+    background: #ffc09f; 
+    color: #F36A6E !important; 
+  } 
+  #boton_send:visited { 
+    padding: 30px; 
+    background: gray; 
+    color: white; 
+  } 
+  .send_btn {
+    padding-top: 17px;
     padding-left: 15px;
     width: 100%;
     margin: 0 auto;
     text-align: center;
-} */
-/* botón de formulario*/
-/* button.main_bt {
+}
+
+button.main_bt {
     background: #F36A6E;
     border: none;
     color: #fff;
@@ -486,257 +473,13 @@ a {
     border-radius: 25px;
     font-size: 26px;
 }
-
-.form-group {
-    margin-bottom: 2rem;
-} */
-
-/* .touch_section_2{
-	width: 100%; 
-	float: left;
-	background-color: #f7941d;
-	padding-top: 40px;	
-	padding-bottom: 40px;
-	height: auto;
-}
-
-.email_text {
-    width: 100%;
-    float: left;
-    margin-top: 30px;
-} */
-
-/* .contact_us_3 {
-    margin-top: 90px;
-    margin-bottom: -105px;
-    box-shadow: 0px 0px 8px 0px;
-    color: #0a1422;
-}
-
-.btn-primary {
-    background: #000000;
-    border: indianred;
-    max-width: 170px;
-    width: 100%;
-    margin-right: 10px;
-    border-radius: 25px;
-}
-
-.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
-    color: #fff;
-    background-color: #000;
-} */
-
-/* button.btn.btn-primary, button.btn.btn-primary:hover, button.btn.btn-primary:focus {
-    background: #000000;
-    padding: 10 40px;
-} */
-
-/* .our_texts{
-	width: 100%;
-	float: left;
-	font-size: 40pt;
-	color: #ebebeb;
-} */
-
-/* .subscribe_bt{
-	padding-right: 30px;
-	padding-left: 30px;
-	background-color: #000;
-	border-top-right-radius: 30px !important;
-	color: #fff;
-	padding-bottom: 10px; 
-	padding-top: 10px;
-	border-bottom-right-radius: 30px !important;
-	border: 0px; 
-	font-size: 17pt;
-} */
-
-/* .email_bt {
-    width: 85%;
-    float: left;
-    border-bottom-left-radius: 30px !important;
-    border-top-left-radius: 30px !important;
-    padding-left: 30px;
-    height: 65px;
-    border: 0px;
-    font-size: 17pt;
-} */
-
-/* .section_footer{
-	width: 100%;
-	float: left;
-	background-color: #272222;
-	height: auto;
-	padding-top: 30px;
-	padding-bottom: 30px; 
-
-}
-
-.mail_section{
-	width: 100%;
-	float: left;
-}
-
-.mail_section ul{
-	margin: 0px;
-	padding: 0px;
-} */
-
-/* .mail_section li{
-	float: left;
-	font-size: 12pt;
-	color: #fdfefe;
-	padding-top: 10px;
-	padding-right: 35px;
-}
-.map_text{
-	padding-left: 30px;
-
-}
-
-.footer_section_2{
-	width: 100%;
-	float: left;
-	padding-top: 40px;
-} */
-
-/* .shop_text {
-    width: 100%;
-    float: left;
-    font-size: 28px;
-    color: #ebebeb;
-    font-weight: bold;
-    padding: 25px 0px;
-} */
-
-/* .dummy_text {
-    width: 100%;
-    float: left;
-    font-size: 12pt;
-    color: #ebebeb;
-    margin-left: 0px;
-    margin-top: 0px;
-    line-height: 30px;
-} */
-
-/* .pet_text {
-    font-size: 12pt;
-    color: #ebebeb;
-    padding-left: 16px;
-} */
-
-/* .image-icon {
-    width: 100%;
-    float: left;
-    padding-top: 6px;
-} */
-
-/* .footer-img {
-    width: 100%;
-    float: left;
-    margin-top: 15px;
-} */
-/* 
-.adderess_text{
-    width: 100%;
-    float: left;
-    font-size: 28px;
-    color: #ebebeb;
-    font-weight: bold;
-    padding: 25px 0px;
-}
-.footer-img{
-	width: 100% !important;
-	float: left;
-	margin-top: 10px;
-	padding-bottom: 15px;
-} */
-
-/* .social-icon{
-	width: 100%;
-	float: left;
-	border-bottom: 3px solid#fff;
-}
-
-.icons {
-    width: 30%;
-    margin: 0 auto;
-    text-align: center;
-    padding-bottom: 70px;
-}
-.icons li{ float: left; padding-left: 40px; } */
-
-/* .copyright{ 
-	width: 100%;
-	float: left;
-	font-size: 12pt;
-	color: #b1b0b0;
-	text-align: center;
-	padding-top: 25px;
-	font-family: Poppins; 
-} */
-
-/* .copyright a{
-	color: #b1b0b0;
-}
-
-.copyright a:hover{
-	color: #ffffff;
-}
+/*----------  Fin estilos Boton registrar --------------------*/
 
 
 
 
 
-.overlay {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
-  overflow-x: hidden;
-  transition: 0.5s;
-}
-
-.overlay-content {
-  position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
-} */
-/* 
-.overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: #f1f1f1;
-  display: block;
-  transition: 0.3s;
-} */
-
-/* .overlay a:hover, .overlay a:focus {
-  color: #ff9900;
-}
-
-.overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-} */
 
 
 
-/* .header-main{
-	width: 100%;
-	float: left;
-	background-color: #1d1b1c;
-	height: auto;
-	padding-top: 20px;
-	padding-bottom: 20px;
-}  */
+
