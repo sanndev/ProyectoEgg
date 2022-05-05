@@ -11,8 +11,15 @@
     
 }
 
-
 .botones-tipo a{
+
+    background-color: #F36A6E !important;
+    border: 3px solid #F36A6E !important;
+    color: #FFFFFF !important;
+
+}
+
+.botones-tipo button{
 
     background-color: #F36A6E !important;
     border: 3px solid #F36A6E !important;
@@ -48,3 +55,51 @@
 
 
 }
+
+.modal-dialog{
+
+    max-width: 700px !important;
+
+}
+
+.descripcion_mascota{
+
+    max-width: 350px !important;
+
+}
+
+.texto-menu-var{
+
+    color: black !important;
+
+}
+
+/*PRUEBAS
+
+.spotlight{
+
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    left: 60;
+    background-image: radial-gradient(circle,transparent 160px, rgba(0, 0, 0, 0.616) 200px);
+
+    color: #FFFFFF;
+    
+
+}
+
+#prueba{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+
+}
+
+
+----------------------------------------------------------------------*/
