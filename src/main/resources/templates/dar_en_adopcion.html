@@ -148,27 +148,24 @@
 				<div class="caja_registro">
 						<div class="input_main">
 						  <div class="container">
-							  <form th:action="@{/mascota/registrar}" th:object="${mascota}" id="contact-form" method="POST">
-								<div class="form-group">
+<!--th:object--><form th:action="@{/mascota/registrar}" th:object="${mascota}" id="contact-form" method="POST">
+								  <div class="form-group">
                   <!-------*Nombre mascota------->
-								  <input th:field="*{nombre}"type="text" required class="nombre-mascota" placeholder="Nombre de la mascota" name="Name">
+<!-- th:field -->  	  <input th:field="*{nombre}"type="text" required class="nombre-mascota" placeholder="Nombre de la mascota" name="Name">
                   <!-------*Select Tipo de mascota------->						
 				              <div class="row">	
 					                <div class="col">
 						               <label for="list_tipo_animal" class="lista-select">Tipo de Animal:</label> 
 						              </div>		
 					                <div class="col">
-						               
 					                </div>
                           <div class="col">
-                            <select required hidden tabindex="0">
-                    
-                                 <option class="option selected focus " value="Perro">Perro</option>
-                                 <option class="option " value="Gato">Gato</option>
-                                 <option class="option " value="Otro">Otro</option>
-                              
-                              </select>
-                           </div>
+<!-- th:field -->           <select required hidden tabindex="0" th:field="*{tipoAnimal}">
+                                 <option class="option selected focus " value="PERRO">Perro</option>
+                                 <option class="option " value="GATO">Gato</option>
+                                 <option class="option " value="OTRO">Otro</option>                              
+                            </select>
+                          </div>
 								      </div>
                   <!-------*Select Sexo------->     
 								      <div class="row">	
@@ -176,19 +173,12 @@
 						               <label for="list_sexo" class="lista-select">Sexo:</label> 
 						              </div>		
 					                <div class="col">
-                            <select required hidden tabindex="0">
-                    
-                              <option class="option selected focus " value="Hembra">Hembra</option>
-                              <option class="option " value="Macho">Macho</option>
-                           
-                           </select>
-						               <div class="nice-select" id="list_sexo" tabindex="0">
-							              <span class="current">Hembra</span>
-							              <ul class="list">
-								              <li class="option selected focus" data-value="Hembra">Hembra</li>								    
-								              <li class="option " data-value="Macho">Macho</li>
-							              </ul>
-					                 </div>
+                          </div>
+                          <div class="col">
+<!-- th:field -->           <select required hidden tabindex="0" th:field="*{sexo}">    
+                              <option class="option selected focus " value="HEMBRA">Hembra</option>
+                              <option class="option " value="MACHO">Macho</option>
+                            </select>
 								          </div>
 								      </div>
                   <!-------*Select Tamaño------->
@@ -197,14 +187,13 @@
 						                <label for="list_tamaño" class="lista-select">Tamaño:</label> 
 						              </div>		
 					                <div class="col">
-						                 <div class="nice-select" id="list_tamaño" tabindex="0">
-							               <span class="current">Mediano</span>
-							                 <ul class="list">
-								                 <li class="option selected focus" data-value="Pequeño">Pequeño</li>								    
-								                 <li class="option " data-value="Mediano">Mediano</li>
-											           <li class="option " data-value="Grande">Grande</li>
-							                 </ul>
-					                   </div>
+                          </div>
+                          <div class="col">
+<!-- th:field -->           <select required hidden tabindex="0" th:field="*{tamanioMascota}">    
+                              <option class="option selected focus " value="PEQUENIA">Pequeño</option>
+                              <option class="option " value="MEDIANA">Mediano</option>
+                              <option class="option " value="GRANDE">Grande</option>
+                            </select>						            
 								          </div>
 					            </div>
                   <!-------*Select Edad------->
@@ -213,14 +202,13 @@
 						                 <label for="list_tamaño" class="lista-select">Edad:</label> 
 						              </div>		
 					                <div class="col">
-						                <div class="nice-select" id="list_edad" tabindex="0">
-							                <span class="current">Cachorro</span>
-							                <ul class="list">
-								                 <li class="option selected focus" data-value="Cachorro">Cachorro</li>								    
-								                 <li class="option " data-value="Joven">Jóven</li>
-											           <li class="option " data-value="Adulto">Adulto</li>
-							                </ul>
-					                  </div>
+                          </div>
+                          <div class="col">						              
+<!-- th:field -->             <select required hidden tabindex="0" th:field="*{edadMascota}">    
+                              <option class="option selected focus " value="CACHORRA">Cachorro</option>
+                              <option class="option " value="JOVEN">Jóven</option>
+                              <option class="option " value="ADULTA">Adulto</option>
+                            </select>
 								          </div>
 					            </div>
                   <!-------*Insertar foto------->
@@ -231,21 +219,21 @@
 						              </div>		
 					                <div class="col-sm-12">
 						                <div class="nice-select" id="foto" tabindex="0">
-							                <input type="file" id="boton_file" >
+<!-- th:field -->              <input type="file" id="boton_file" th:field="*{foto}">
 					                  </div>
 								          </div>
 					            </div>	  
                   <!-------*Descripción mascota------->
 								      <div class="row">	
 					                <div class="col-sm-12">
-										        <textarea class="descripcion-registro" placeholder="Descripción" rows="3" id="comment" name="Massage"></textarea> 
+<!-- th:field -->						 <textarea class="descripcion-registro" placeholder="Descripción" rows="3" id="comment" name="Massage" th:field="*{descripcion}"></textarea> 
 						              </div>					
 					            </div>
                   <!-------*Botón registro------->								 
 							        <div class="send_btn">
 							          <button type="button" class="main_bt" id="boton_send"><a href="#">Registrar</a></button>
 							        </div> 
-                
+                  </div>
 							  </form>                   
 						  </div>
 					  </div>				
