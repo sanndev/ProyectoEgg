@@ -215,9 +215,7 @@ noBtnLabel = 'Cancel';
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
 
-                <li class="ms-3"><a class="text-muted" href="#"><i class="bi-instagram"></i></use></svg></a></li> <!--instagram-->
-                <li class="ms-3"><a class="text-muted" href="#"><i class="bi-facebook"></i></use></svg></a></li> <!--facebook-->
-                <li class="ms-3"><a class="text-muted" href="#"><i class="bi-whatsapp"></i></use></svg></a></li> <!--facebook-->
+                <li class="ms-3"><a class="text-muted" href="#"><i class="bi-whatsapp"></i></use></svg></a></li> <!--whatsapp-->
 
                 <!----------------------------------------------------------------------------------------------->
 
