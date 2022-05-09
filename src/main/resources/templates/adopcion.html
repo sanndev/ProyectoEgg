@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!------------ mobile metas ------------>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <!------------ site metas -------------->
+    <title>Dar en Adopción</title>
+    <meta
+      name="keywords"
+      content="mascotas,perros,gatos,adopción,adopción mascotas,adoptar una mascota,adoptar un perro,adoptar un gato,consejos para dar en adopción, adoptar,pasos para dar en adoptción una mascota,Consejos para dar en adopción una mascota, consejos, perros, mascotas"
+    />
+    <meta
+      name="description"
+      content="Consejos para dar a una mascota en adopción. Registrate y te ayudamos a conectar con la mejor familia adoptiva"
+    />
+    <meta name="author" content="" />
+    <link rel="icon" th:href="@{/img/dar_adopcion.png}" href="../static/img/dar_adopcion.png" sizes="any" />
+    <!------------- bootstrap css ---------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!------------- style css -------------->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/estilos-dar-en-adopcion.css}" href="../static/css/estilos-dar-en-adopcion.css" />
+    <!------------- Responsive-------------->
+    <link rel="stylesheet"th:href="@{/css/responsive-dar-en-adopcion.css}" href="../static/css/responsive-dar-en-adopcion.css" />
+    <!-----------Estilo acordeón y formulario---------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+    />
+    
+  </head>
+  <body>
+    <!------------ Loader- prueba ---------------->
+    <!-- !-- <div id="loader-container">
+      <div class="loader"></div>
+      <div class="loader2"></div>
+      <div clas="hidden"></div>
+    </div> --> 
+    <!------------ fin loader -------------------->
+
+  <!------------ Sección consejos dar en Adopción ---------------->
+    <div class="consejos_dar_adopcion">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9">
+            <h1 class="consejos_titulo">
+              Consejos para dar una mascota en adopción
+            </h1>
+            <p class="consejos_text">
+              <br>Para que consigas los mejores adoptantes para tu peludo te
+              recomendamos lo siguiente:
+            </p>
+            <div class="banner_bt"></div>
+          </div>
+          <div class="col-sm-3">
+            <div class="cat_img">
+              <img th:src="@{/img/cat.png}" src="../static/img/cat.png" style="max-width: 100%" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------------ Acordeón consejos ---------------->
+    <div class="container2">
+      <div class="accordion">
+        <h5>Tomá lindas fotos</h5>
+        <i class="fas fa-minus"></i>
+        <i class="fas fa-plus"></i>
+      </div>
+      <div class="panal">
+        <p>
+            <ul>
+                <li><b>-</b>Probá sacar algunas fotos de su rostro y otras de cuerpo entero, elegí luego la que más te guste.</li>
+                <li><b>-Lugares recomendados:</b> al lado de una ventana, en un parque o plaza, sin estorbos visuales (que no haya otros animales en la foto o estructuras llamativas que quiten el interés del animal).</li>
+                <li><b>-Iluminación:</b> tratá que sea de día y lo más natural posible (no uses flash).</li>
+                <li><b>-Posición: </b>es mejor ubicarte a su altura (dentro de lo posible).</li>
+                <li><b>-Poses: </b>podés probar con distintas poses (sentado y mirando a la cámara quizás sea la más cómoda).</li>
+                <li><b>-Accesorios: </b>podés agregarle algún moño/cinta/ropa únicamente si no le resulta incómodo, tratá de evitar tomarle fotos con correa.</li>
+                <li><b>-Pedí ayuda! </b>sobre todo para captar su atención a la hora de tomar las imágenes.</li>
+                <li><b>-Por último, </b>tomate un tiempo para hacerlo, seguro necesitarás paciencia y jugar un poco con ella/él antes de comenzar para que entre en confianza.</li>
+             </ul>
+        </p>
+      </div>
+
+      <div class="accordion">
+        <h5>Elegí un nombre que te guste</h5>
+        <i class="fas fa-minus"></i>
+        <i class="fas fa-plus"></i>
+      </div>
+      <div class="panal">
+        <p>
+          -Un nombre bonito e interesante podría ayudarte a captar la atención de un posible adoptante, ¡no dudes en ponerte creativo a la hora de elegirlo!
+        </p>
+      </div>
+
+      <div class="accordion">
+        <h5>Realizá una descripción interesante sobre la misma, podés contar, brevemente:</h5>
+        <i class="fas fa-minus"></i>
+        <i class="fas fa-plus"></i>
+      </div>
+      <div class="panal">
+        <p>
+          <ul>
+              <li>-Cómo la/lo encontraste;</li>
+              <li>-el proceso de recuperación por el que pasó (en caso de que lo haya necesitado);</li>
+              <li>-requisitos particulares que pudieras tener (en casos de enfermedades pre-existentes, por ejemplo); </li>
+              <li>-el tipo de personalidad que tiene el animal (tanto sus cualidades más entretenidas y dulces, como si le gustan los niños, o no, si es muy energético y necesita hacer bastante ejercicio, etc.).</li>
+          </ul>
+        </p>
+      </div>
+
+      <div class="accordion">
+        <h5>Pensá qué requisitos particulares y preguntas te gustaría realizar a la persona interesada en adoptar. Te recomendamos chequear:</h5>
+        <i class="fas fa-minus"></i>
+        <i class="fas fa-plus"></i>
+      </div>
+      <div class="panal">
+        <p>
+          <ul>
+            <li>-que el domicilio esté cercado, esto es fundamental para evitar exponerlo a accidentes/enfermedades y ataques, lo ideal sería que pudieras entregarlo personalmente para poder chequear esto;</li>
+            <li>-si se trata de un gato en adopción, chequeá que la persona tenga o esté dispuesta a colocar protección en su balcón y/o ventanas para evitar accidentes (sobre todo caidas mortales, contagio de enfermedades graves, etc.);</li>
+            <li>-que la persona interesada asuma un compromiso de castración;</li>
+            <li>-que todos los integrantes de la familia estén al tanto de la adopción y apoyen la misma;</li>
+            <li>-que la persona conoce sobre los cuidados básicos del tipo de animal y el gasto estipulado que podrían implicarle;</li>
+            <li>-que no sea un “regalo” destinado a un niño muy pequeño;</li>
+            <li>-si el animal tendrá compañía o estará solo durante todo el día, más si es un cachorro (ya que necesita ser alimentado de manera más frecuente).</li>
+          </ul>
+        </p>
+      </div>
+    </div>
+    <!--------------- Fin Acordeón------------------->
+  <!------------ Fin Sección consejos dar en Adopción ---------------->
+
+  <!-----------------Formulario Registro de mascota------------->
+    <div class="registro_seccion">
+    	<div class="container">
+        <!-------*Título Form------->
+				<div class="row">
+					<div class="col-sm-12">
+						<h3 class="titulo_registro"><strong><span style="color: #F36A6E;">Completá los datos de la mascota</span> </strong></h3>
+					</div>
+				</div>
+        <!-------*Caja form------->
+				<div class="caja_registro">
+						<div class="input_main">
+						  <div class="container">
+<!--th:object--><form th:action="@{/mascota/registrar}" th:object="${mascota}" id="contact-form" method="POST">
+								  <div class="form-group">
+                  <!-------*Nombre mascota------->
+<!-- th:field -->  	  <input th:field="*{nombre}"type="text" required class="nombre-mascota" placeholder="Nombre de la mascota" name="Name">
+                  <!-------*Select Tipo de mascota------->						
+				              <div class="row">	
+					                <div class="col">
+						               <label for="list_tipo_animal" class="lista-select">Tipo de Animal:</label> 
+						              </div>		
+					                <div class="col">
+					                </div>
+                          <div class="col">
+<!-- th:field -->           <select required hidden tabindex="0" th:field="*{tipoAnimal}">
+                                 <option class="option selected focus " value="PERRO">Perro</option>
+                                 <option class="option " value="GATO">Gato</option>
+                                 <option class="option " value="OTRO">Otro</option>                              
+                            </select>
+                          </div>
+								      </div>
+                  <!-------*Select Sexo------->     
+								      <div class="row">	
+					                <div class="col">
+						               <label for="list_sexo" class="lista-select">Sexo:</label> 
+						              </div>		
+					                <div class="col">
+                          </div>
+                          <div class="col">
+<!-- th:field -->           <select required hidden tabindex="0" th:field="*{sexo}">    
+                              <option class="option selected focus " value="HEMBRA">Hembra</option>
+                              <option class="option " value="MACHO">Macho</option>
+                            </select>
+								          </div>
+								      </div>
+                  <!-------*Select Tamaño------->
+								      <div class="row">	
+					                <div class="col">
+						                <label for="list_tamaño" class="lista-select">Tamaño:</label> 
+						              </div>		
+					                <div class="col">
+                          </div>
+                          <div class="col">
+<!-- th:field -->           <select required hidden tabindex="0" th:field="*{tamanioMascota}">    
+                              <option class="option selected focus " value="PEQUENIA">Pequeño</option>
+                              <option class="option " value="MEDIANA">Mediano</option>
+                              <option class="option " value="GRANDE">Grande</option>
+                            </select>						            
+								          </div>
+					            </div>
+                  <!-------*Select Edad------->
+								      <div class="row">	
+					                <div class="col">
+						                 <label for="list_tamaño" class="lista-select">Edad:</label> 
+						              </div>		
+					                <div class="col">
+                          </div>
+                          <div class="col">						              
+<!-- th:field -->             <select required hidden tabindex="0" th:field="*{edadMascota}">    
+                              <option class="option selected focus " value="CACHORRA">Cachorro</option>
+                              <option class="option " value="JOVEN">Jóven</option>
+                              <option class="option " value="ADULTA">Adulto</option>
+                            </select>
+								          </div>
+					            </div>
+                  <!-------*Insertar foto------->
+								         <!-- <label>Archivo:</label><br> <input type="file">  <br> -->
+								      <div class="row">	
+					                <div class="col-sm-12">
+						                <label for="foto" class="lista-select"> &#128071 Su mejor foto &#128525:</label> 
+						              </div>		
+					                <div class="col-sm-12">
+						                <div class="nice-select" id="foto" tabindex="0">
+<!-- th:field -->              <input type="file" id="boton_file" th:field="*{foto}">
+					                  </div>
+								          </div>
+					            </div>	  
+                  <!-------*Descripción mascota------->
+								      <div class="row">	
+					                <div class="col-sm-12">
+<!-- th:field -->						 <textarea class="descripcion-registro" placeholder="Descripción" rows="3" id="comment" name="Massage" th:field="*{descripcion}"></textarea> 
+						              </div>					
+					            </div>
+                  <!-------*Botón registro------->								 
+							        <div class="send_btn">
+							          <button type="button" class="main_bt" id="boton_send"><a href="#">Registrar</a></button>
+							        </div> 
+                  </div>
+							  </form>                   
+						  </div>
+					  </div>				
+				</div>				
+		
+			
+		</div>
+	  </div>
+  <!-------------Fin Formulario Registro de mascota------------->
+
+    <!-- Scrips prueba loader -->
+      <!-- <script>
+      window.onload = function(){
+        var loader-container= document.
+      }
+    </script> -->
+
+
+    <!--------------------------Scrips acordeón ---------------------------->
+    <script th:src="@{/js/acordion-dar-en-adopcion.js}" src="../static/js/acordion-dar-en-adopcion.js"></script>
+    <!------------------------Scripts formulario registro ------------------>
+    <script th:src="@{/js/jquery.min-dar-en-adopcion.js}" src="../static/js/jquery.min-dar-en-adopcion.js"></script>
+    <script th:src="@{/js/plugin-dar-en-adopcion.js}" src="../static/js/plugin-dar-en-adopcion.js"></script>
+    <script th:src="@{/js/custom-dar-en-adopcion}" src="../static/js/custom-dar-en-adopcion.js"></script>
+
+  </body>
+</html>
