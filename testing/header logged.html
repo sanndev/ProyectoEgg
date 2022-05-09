@@ -45,10 +45,12 @@
     <h1 class= "text-center mb-3">Configuracion de la cuenta</h1>
     <div class= "container w-50 d-block border"> 
       <div class="col-md-3 w-100 mb-3 mt-3">
-        <input type="text" class="form-control" placeholder="@nombre" aria-label="First name">
+        <label for="inputName" class="form-label">Nombre</label>
+        <input type="text" class="form-control" aria-label="First name">
       </div>
       <div class="col-md-3 w-100 mb-3" >
-        <input type="text" class="form-control  disabled" placeholder="@apellido" aria-label="Last name">
+        <label for="inputName2" class="form-label">Apellido</label>
+        <input type="text" class="form-control  disabled"  aria-label="Last name">
       </div>
       <div class="col-md-3 w-100">
         <label for="inputEmail4" class="form-label">Email</label>
@@ -61,6 +63,10 @@
       <div class="col-md-3 w-100 mb-3">
         <label for="InputTel" class="form-label">Numero de Telefono</label>
         <input type="tel" class="form-control" id="InputTel" placeholder="381-xxx-xxx">
+      </div>
+      <div class="col-md-3 w-100 mb-3">
+        <label for="InputZone" class="form-label">Zona</label>
+        <input type="text" class="form-control" id="InputTel" placeholder="San Miguel de Tucuman">
       </div>
   </div>
   <h2 class= "text-center mb-3 mt-3">Mis Mascotas</h2>
