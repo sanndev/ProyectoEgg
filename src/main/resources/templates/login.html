@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
     <head>
         <title>TODO supply a title</title>
@@ -10,19 +10,20 @@
 
     <body>
 
-        <div class="container">
+        <div class="container mt-3 border d-block w-50 justify-content-center">
 
             <h1>Inicio de sesión</h1>
-            <form>
+            <form th:action="@{/logincheck}" method="POST">
+                <p th:if="${error != null}" th:text="${error}" style="color: red;"</p>
+                <p th:if="${logout != null}" th:text="${logout}" style="color: green;"</p>
+
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Usuario</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                           placeholder="Ingrese su usuario">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1"
-                           placeholder="Ingrese su contraseña">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" name="password">
                 </div>
                 <button type="submit" class="btn btn-primary">Ingresar</button>
             </form>

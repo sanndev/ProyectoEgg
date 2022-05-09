@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,16 +18,22 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
-public class UsuarioServicio implements UserDetailsService {
+public class UsuarioServicio implements UserDetailsService { // implements UserDetailsService
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
-    public void registrarUsuario(String nombre, String apellido, String telefono, String email, String password, Zona zona) throws ErroresServicio {
+    @Autowired
+    private ZonaServicio zonaServicio;
 
-        validarDatos(nombre, apellido, telefono, email, password, zona);
+    public void registrarUsuario(String nombre, String apellido, String telefono, String email, String password, String password2, String idZona) throws ErroresServicio {
+
+        Zona zona = zonaServicio.devolverZona(idZona);
+        validarDatos(nombre, apellido, telefono, email, password, password2, zona);
 
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
@@ -43,9 +50,10 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
-    public void modificarUsuario(String id, String nombre, String apellido, String telefono, String email, String password, Zona zona) throws ErroresServicio {
+    public void modificarUsuario(String id, String nombre, String apellido, String telefono, String email, String password, String password2, String idZona) throws ErroresServicio {
 
-        validarDatos(nombre, apellido, telefono, email, password, zona);
+        Zona zona = zonaServicio.devolverZona(idZona);
+        validarDatos(nombre, apellido, telefono, email, password, password2, zona);
 
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
 
@@ -104,7 +112,7 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
-    private void validarDatos(String nombre, String apellido, String telefono, String email, String password, Zona zona) throws ErroresServicio {
+    private void validarDatos(String nombre, String apellido, String telefono, String email, String password, String password2, Zona zona) throws ErroresServicio {
 
         if (nombre == null || nombre.isEmpty()) {
 
@@ -126,48 +134,68 @@ public class UsuarioServicio implements UserDetailsService {
 
         if (email == null || email.isEmpty()) {
 
-            throw new ErroresServicio("Ingrese un correo electrónico");
+            throw new ErroresServicio("Ingrese un correo electrónico válido");
+
+        }
+
+        if (usuarioRepositorio.buscarPorEmail(email).equals(email)) {
+
+            throw new ErroresServicio("Ya existe un usuario con este email");
 
         }
 
         if (password == null || password.isEmpty()) {
 
             throw new ErroresServicio("Ingrese una contraseña");
+        }
 
-        } else if (password.length() < 8) {
+        if (password.length() < 8) {
             throw new ErroresServicio("La contraseña debe tener 8 o más caracteres");
+        }
+
+        if (password.length() > 15) {
+            throw new ErroresServicio("La contraseña no puede superar los 15 caracteres");
+        }
+
+        if (!password.equals(password2)) {
+
+            throw new ErroresServicio("Las contraseñas deben ser iguales");
+
         }
 
         if (zona == null) {
 
-            throw new ErroresServicio("Seleccione una zona por favor");
+            throw new ErroresServicio("Seleccione una zona");
 
         }
 
     }
 
+    public void agregarUsuarioALaSesion(Usuario usuario) {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session = attributes.getRequest().getSession(true);
+        session.setAttribute("usuariosession", usuario);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
-        if (usuario != null) {
+        try {
 
+            Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
+            agregarUsuarioALaSesion(usuario);
             List<GrantedAuthority> permisos = new ArrayList<>();
 
-            GrantedAuthority permiso1 = new SimpleGrantedAuthority("MODULO_FOTOS");
-            permisos.add(permiso1);
+            if (usuario != null) {
+                GrantedAuthority permiso1 = new SimpleGrantedAuthority("ROLE_USUARIO_REGISTRADO");
+                permisos.add(permiso1);
+            }
 
-            GrantedAuthority permiso2 = new SimpleGrantedAuthority("MODULO_MASCOTAS");
-            permisos.add(permiso2);
+            // advertencia aqui porque posiblemente si la variable usuario viene null nunca podre obtener el mail ni password ni agregar permisos a esa variable
+            return new User(usuario.getEmail(), usuario.getPassword(), permisos);
 
-            GrantedAuthority permiso3 = new SimpleGrantedAuthority("MODULO_PUBLICACIONES");
-            permisos.add(permiso3);
-
-            User user = new User(usuario.getEmail(), usuario.getPassword(), permisos);
-            return user;
-
-        } else {
-            return null;
+        } catch (Exception e) {
+            throw new UsernameNotFoundException("El usuario no existe");
         }
 
     }

@@ -21,7 +21,7 @@ public class ErrorControlador implements ErrorController {
                 modelo.addAttribute("explicacion", "La solicitud contiene información incorrecta");
                 break;
             case 403:
-                modelo.addAttribute("explicacion", "No tiene los permisos necesarios para acceder");
+                modelo.addAttribute("explicacion", "No tiene los permisos necesarios para acceder a este recurso");
                 break;
             case 404:
                 modelo.addAttribute("explicacion", "Página no encontrada");
@@ -29,6 +29,10 @@ public class ErrorControlador implements ErrorController {
             case 500:
                 modelo.addAttribute("explicacion", "Error interno en el servidor");
                 break;
+            default:
+                modelo.addAttribute("explicacion", "Ocurrió un error inesperado");
+                break;
+
         }
         return "error";
     }

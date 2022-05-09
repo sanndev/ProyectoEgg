@@ -25,6 +25,7 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http.authorizeRequests().antMatchers("/css/*", "/img/*", "/js/*")
                 .permitAll()
                 .and()
@@ -32,13 +33,33 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/") // url donde el usuario es redireccionado cuando inicia sesion, chequear esto luego
+                .defaultSuccessUrl("/homeprueba")
                 .loginProcessingUrl("/logincheck")
-                .failureUrl("/login?error=error")
+                .failureUrl("/login?error=error") // ???
                 .permitAll()
-                .and().logout()
+                .and()
+                .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/login?logout");
+
+//        // esta config es tal cual los videos de youtube del curso   
+//        http.headers().frameOptions().sameOrigin().and()
+//                .authorizeRequests()
+//                .antMatchers("/css/*", "/js/*", "/img/*")
+//                .permitAll()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .loginProcessingUrl("/logincheck")
+//                .usernameParameter("email")
+//                .passwordParameter("password")
+//                .defaultSuccessUrl("/homeprueba")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .logoutUrl("/logout")
+//                .logoutSuccessUrl("/")
+//                .permitAll();
     }
 
 }
