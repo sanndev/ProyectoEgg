@@ -32,5 +32,5 @@ public class Publicacion {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date fechaPublicacion;
-
+   
 }
