@@ -1,7 +1,6 @@
 package EggAdopcionMascotas.AppAdopcionMascotas.Servicios;
 
 import EggAdopcionMascotas.AppAdopcionMascotas.Entidades.Usuario;
-import EggAdopcionMascotas.AppAdopcionMascotas.Entidades.Zona;
 import EggAdopcionMascotas.AppAdopcionMascotas.Errores.ErroresServicio;
 import EggAdopcionMascotas.AppAdopcionMascotas.Repositorios.UsuarioRepositorio;
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
-public class UsuarioServicio implements UserDetailsService { // implements UserDetailsService
+public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
@@ -42,41 +41,30 @@ public class UsuarioServicio implements UserDetailsService { // implements UserD
 
     }
 
-    public void modificarUsuario(String id, String nombre, String apellido, String telefono, String email, String password, String password2, String idZona) throws ErroresServicio {
+    public Usuario encontrarUsuario(Usuario usuario) {
+        return usuarioRepositorio.findById(usuario.getId()).orElse(null);
+    }
 
-//        Zona zona = zonaServicio.devolverZona(idZona);
-//        validarDatos(nombre, apellido, telefono, email, password, password2, zona);
-//
-//        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
-//
-//        if (!respuesta.isPresent()) {
-//
-//            throw new ErroresServicio("No se encontró el usuario solicitado");
-//
-//        }
-//
-//        Usuario usuario = respuesta.get();
-//        usuario.setNombre(nombre);
-//        usuario.setApellido(apellido);
-//        usuario.setTelefono(telefono);
-//        usuario.setEmail(email);
-//
-//        String passwordEncriptado = new BCryptPasswordEncoder().encode(password);
-//        usuario.setPassword(passwordEncriptado);
-//
-//        usuario.setZona(zona);
-//
-//        usuarioRepositorio.save(usuario);
+    public Usuario modificarUsuario(String password2, Usuario usuario) throws ErroresServicio {
+
+        validarDatos(password2, usuario);
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(usuario.getId());
+
+        if (!respuesta.isPresent()) {
+
+            throw new ErroresServicio("No se encontró el usuario solicitado");
+        }
+        String passwordEncriptado = new BCryptPasswordEncoder().encode(usuario.getPassword());
+        usuario.setPassword(passwordEncriptado);
+        return usuarioRepositorio.save(usuario);
+
     }
 
     public void deshabilitarUsuario(String id) throws ErroresServicio {
 
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
-
         if (!respuesta.isPresent()) {
-
             throw new ErroresServicio("No se encontró el usuario solicitado");
-
         }
 
         Usuario usuario = respuesta.get();
@@ -84,6 +72,10 @@ public class UsuarioServicio implements UserDetailsService { // implements UserD
 
         usuarioRepositorio.save(usuario);
 
+    }
+
+    public Usuario buscarUsuarioPorId(String id) {
+        return usuarioRepositorio.findById(id).orElse(null);
     }
 
     public void habilitarUsuario(String id) throws ErroresServicio {
@@ -154,7 +146,6 @@ public class UsuarioServicio implements UserDetailsService { // implements UserD
 
         }
 
-        System.out.println("Zona usuario: " + usuario.getZona());
         if (usuario.getZona() == null) {
 
             throw new ErroresServicio("Seleccione una zona");

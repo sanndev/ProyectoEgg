@@ -13,14 +13,11 @@ public class MainControlador {
     public String index() {
         return "index";
     }
-    
-    
-
 
     @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
-    @GetMapping("/homeprueba")
-    public String home() {
-        return "homeprueba";
+    @GetMapping("/facundo")
+    public String facundo() {
+        return "facundo";
     }
 
 }

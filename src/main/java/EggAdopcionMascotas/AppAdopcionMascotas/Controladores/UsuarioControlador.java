@@ -37,13 +37,10 @@ public class UsuarioControlador {
     @PostMapping("/registrar")
     public String registrar(@RequestParam String password2,
             Model modelo,
-            @ModelAttribute("usuario") Usuario usuario
-    ) {
+            @ModelAttribute("usuario") Usuario usuario) {
         try {
 
-            System.out.println("Usuario: " + usuario.toString());
             usuarioServicio.registrarUsuario(password2, usuario);
-
             modelo.addAttribute("succes", "Usuario registrado correctamente");
 
         } catch (ErroresServicio e) {
@@ -53,10 +50,23 @@ public class UsuarioControlador {
 
         }
 
-        List<Zona> zonas = zonaServicio.listarZonas();
-        modelo.addAttribute("zonas", zonas);
         return "SignUp";
 
     }
 
+//    @GetMapping("/editar")
+//    public String editar(@RequestParam String password2,Model modelo, String id) {
+//
+//        try {
+//            Optional<Usuario> usuario = usuarioServicio.buscarPorId(id);
+//            modelo.addAttribute("usuario", usuario);
+//        } catch (Exception e) {
+//            e.getMessage();
+//        }
+//
+//        List<Zona> zonas = zonaServicio.listarZonas();
+//        modelo.addAttribute("zonas", zonas);
+//        return "editarprueba";
+//
+//    }
 }
