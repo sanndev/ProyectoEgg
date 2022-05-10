@@ -26,7 +26,8 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests().antMatchers("/css/*", "/img/*", "/js/*")
+   http.authorizeRequests()
+           .antMatchers("/css/*", "/img/*", "/js/*")
                 .permitAll()
                 .and()
                 .formLogin()
@@ -41,25 +42,6 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login?logout");
-
-//        // esta config es tal cual los videos de youtube del curso   
-//        http.headers().frameOptions().sameOrigin().and()
-//                .authorizeRequests()
-//                .antMatchers("/css/*", "/js/*", "/img/*")
-//                .permitAll()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .loginProcessingUrl("/logincheck")
-//                .usernameParameter("email")
-//                .passwordParameter("password")
-//                .defaultSuccessUrl("/homeprueba")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/")
-//                .permitAll();
     }
 
 }

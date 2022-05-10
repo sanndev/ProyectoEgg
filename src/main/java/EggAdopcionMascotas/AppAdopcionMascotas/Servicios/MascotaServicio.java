@@ -28,7 +28,6 @@ public class MascotaServicio {
    {
    
     Mascota mascota = new Mascota();
-    
     mascota.setTipoAnimal(tipoAnimal);
     mascota.setSexo(sexo);
     mascota.setEstadoAdopcion(EstadoAdopcion.ENADOPCION);
@@ -46,8 +45,12 @@ public class MascotaServicio {
        Optional<Mascota> mascota = repomascota.findById(MascotaID);
        
        if(mascota.get() != null)
+       {
+            return mascota;
+       }
+       return null;
        
-       return mascota;
+       
    }
    
    public void ElimarMascota(String MascotaID)
@@ -55,19 +58,6 @@ public class MascotaServicio {
         Optional<Mascota> mascota = repomascota.findById(MascotaID);
         
         repomascota.delete(mascota.get());
-   }
-   
-   
-   public List<Mascota> GetListMascota()
-   {
-   
-   
-   }
-   
-   
-   private void validate()
-   {
-   
    }
    
    
