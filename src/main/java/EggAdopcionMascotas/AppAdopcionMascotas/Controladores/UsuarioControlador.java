@@ -1,0 +1,62 @@
+package EggAdopcionMascotas.AppAdopcionMascotas.Controladores;
+
+import EggAdopcionMascotas.AppAdopcionMascotas.Entidades.Usuario;
+import EggAdopcionMascotas.AppAdopcionMascotas.Entidades.Zona;
+import EggAdopcionMascotas.AppAdopcionMascotas.Errores.ErroresServicio;
+import EggAdopcionMascotas.AppAdopcionMascotas.Servicios.UsuarioServicio;
+import EggAdopcionMascotas.AppAdopcionMascotas.Servicios.ZonaServicio;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+@RequestMapping("/usuario")
+public class UsuarioControlador {
+
+    @Autowired
+    private UsuarioServicio usuarioServicio;
+
+    @Autowired
+    private ZonaServicio zonaServicio;
+
+    @GetMapping("/registro")
+    public String registro(Model modelo) {
+        List<Zona> zonas = zonaServicio.listarZonas();
+        modelo.addAttribute("zonas", zonas);
+        modelo.addAttribute("usuario", new Usuario());
+
+        return "SignUp";
+    }
+
+    @PostMapping("/registrar")
+    public String registrar(@RequestParam String password2,
+            Model modelo,
+            @ModelAttribute("usuario") Usuario usuario
+    ) {
+        try {
+
+            System.out.println("Usuario: " + usuario.toString());
+            usuarioServicio.registrarUsuario(password2, usuario);
+
+            modelo.addAttribute("succes", "Usuario registrado correctamente");
+
+        } catch (ErroresServicio e) {
+
+            modelo.addAttribute("error", e.getMessage());
+            modelo.addAttribute("usuario", usuario);
+
+        }
+
+        List<Zona> zonas = zonaServicio.listarZonas();
+        modelo.addAttribute("zonas", zonas);
+        return "SignUp";
+
+    }
+
+}
