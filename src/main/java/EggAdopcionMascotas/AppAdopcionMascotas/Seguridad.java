@@ -42,24 +42,6 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login?logout");
 
-//        // esta config es tal cual los videos de youtube del curso   
-//        http.headers().frameOptions().sameOrigin().and()
-//                .authorizeRequests()
-//                .antMatchers("/css/*", "/js/*", "/img/*")
-//                .permitAll()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .loginProcessingUrl("/logincheck")
-//                .usernameParameter("email")
-//                .passwordParameter("password")
-//                .defaultSuccessUrl("/homeprueba")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/")
-//                .permitAll();
     }
 
 }
