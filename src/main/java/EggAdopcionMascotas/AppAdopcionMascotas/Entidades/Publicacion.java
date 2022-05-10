@@ -16,6 +16,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Data
 public class Publicacion {
 
+    
+    
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")

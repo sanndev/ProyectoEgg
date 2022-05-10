@@ -30,20 +30,12 @@ public class UsuarioServicio implements UserDetailsService { // implements UserD
     @Autowired
     private ZonaServicio zonaServicio;
 
-    public void registrarUsuario(String nombre, String apellido, String telefono, String email, String password, String password2, String idZona) throws ErroresServicio {
+    public void registrarUsuario(String password2, Usuario usuario) throws ErroresServicio {
 
-        Zona zona = zonaServicio.devolverZona(idZona);
-        validarDatos(nombre, apellido, telefono, email, password, password2, zona);
+        validarDatos(password2, usuario);
 
-        Usuario usuario = new Usuario();
-        usuario.setNombre(nombre);
-        usuario.setApellido(apellido);
-        usuario.setTelefono(telefono);
-        usuario.setEmail(email);
-
-        String passwordEncriptado = new BCryptPasswordEncoder().encode(password);
+        String passwordEncriptado = new BCryptPasswordEncoder().encode(usuario.getPassword());
         usuario.setPassword(passwordEncriptado);
-        usuario.setZona(zona);
         usuario.setFechaAlta(new Date());
 
         usuarioRepositorio.save(usuario);
@@ -52,30 +44,29 @@ public class UsuarioServicio implements UserDetailsService { // implements UserD
 
     public void modificarUsuario(String id, String nombre, String apellido, String telefono, String email, String password, String password2, String idZona) throws ErroresServicio {
 
-        Zona zona = zonaServicio.devolverZona(idZona);
-        validarDatos(nombre, apellido, telefono, email, password, password2, zona);
-
-        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
-
-        if (!respuesta.isPresent()) {
-
-            throw new ErroresServicio("No se encontró el usuario solicitado");
-
-        }
-
-        Usuario usuario = respuesta.get();
-        usuario.setNombre(nombre);
-        usuario.setApellido(apellido);
-        usuario.setTelefono(telefono);
-        usuario.setEmail(email);
-
-        String passwordEncriptado = new BCryptPasswordEncoder().encode(password);
-        usuario.setPassword(passwordEncriptado);
-
-        usuario.setZona(zona);
-
-        usuarioRepositorio.save(usuario);
-
+//        Zona zona = zonaServicio.devolverZona(idZona);
+//        validarDatos(nombre, apellido, telefono, email, password, password2, zona);
+//
+//        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+//
+//        if (!respuesta.isPresent()) {
+//
+//            throw new ErroresServicio("No se encontró el usuario solicitado");
+//
+//        }
+//
+//        Usuario usuario = respuesta.get();
+//        usuario.setNombre(nombre);
+//        usuario.setApellido(apellido);
+//        usuario.setTelefono(telefono);
+//        usuario.setEmail(email);
+//
+//        String passwordEncriptado = new BCryptPasswordEncoder().encode(password);
+//        usuario.setPassword(passwordEncriptado);
+//
+//        usuario.setZona(zona);
+//
+//        usuarioRepositorio.save(usuario);
     }
 
     public void deshabilitarUsuario(String id) throws ErroresServicio {
@@ -112,58 +103,59 @@ public class UsuarioServicio implements UserDetailsService { // implements UserD
 
     }
 
-    private void validarDatos(String nombre, String apellido, String telefono, String email, String password, String password2, Zona zona) throws ErroresServicio {
+    private void validarDatos(String password2, Usuario usuario) throws ErroresServicio {
 
-        if (nombre == null || nombre.isEmpty()) {
+        if (usuario.getNombre() == null || usuario.getNombre().isEmpty()) {
 
             throw new ErroresServicio("Ingrese un nombre");
 
         }
 
-        if (apellido == null || apellido.isEmpty()) {
+        if (usuario.getApellido() == null || usuario.getApellido().isEmpty()) {
 
             throw new ErroresServicio("Ingrese un apellido");
 
         }
 
-        if (telefono == null || telefono.isEmpty()) {
+        if (usuario.getTelefono() == null || usuario.getTelefono().isEmpty()) {
 
             throw new ErroresServicio("Ingrese un número de teléfono");
 
         }
 
-        if (email == null || email.isEmpty()) {
+        if (usuario.getEmail() == null || usuario.getEmail().isEmpty()) {
 
             throw new ErroresServicio("Ingrese un correo electrónico válido");
 
         }
 
-        if (usuarioRepositorio.buscarPorEmail(email).equals(email)) {
+        if (usuarioRepositorio.buscarPorEmail(usuario.getEmail()) != null) {
 
             throw new ErroresServicio("Ya existe un usuario con este email");
 
         }
 
-        if (password == null || password.isEmpty()) {
+        if (usuario.getPassword() == null || usuario.getPassword().isEmpty()) {
 
             throw new ErroresServicio("Ingrese una contraseña");
         }
 
-        if (password.length() < 8) {
+        if (usuario.getPassword().length() < 8) {
             throw new ErroresServicio("La contraseña debe tener 8 o más caracteres");
         }
 
-        if (password.length() > 15) {
+        if (usuario.getPassword().length() > 15) {
             throw new ErroresServicio("La contraseña no puede superar los 15 caracteres");
         }
 
-        if (!password.equals(password2)) {
+        if (!usuario.getPassword().equals(password2)) {
 
             throw new ErroresServicio("Las contraseñas deben ser iguales");
 
         }
 
-        if (zona == null) {
+        System.out.println("Zona usuario: " + usuario.getZona());
+        if (usuario.getZona() == null) {
 
             throw new ErroresServicio("Seleccione una zona");
 
