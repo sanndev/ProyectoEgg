@@ -41,8 +41,8 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
-    public Usuario encontrarUsuario(Usuario usuario) {
-        return usuarioRepositorio.findById(usuario.getId()).orElse(null);
+    public Usuario buscarUsuarioPorId(String id) {
+        return usuarioRepositorio.findById(id).orElse(null);
     }
 
     public Usuario modificarUsuario(String password2, Usuario usuario) throws ErroresServicio {
@@ -72,10 +72,6 @@ public class UsuarioServicio implements UserDetailsService {
 
         usuarioRepositorio.save(usuario);
 
-    }
-
-    public Usuario buscarUsuarioPorId(String id) {
-        return usuarioRepositorio.findById(id).orElse(null);
     }
 
     public void habilitarUsuario(String id) throws ErroresServicio {
@@ -157,7 +153,7 @@ public class UsuarioServicio implements UserDetailsService {
     public void agregarUsuarioALaSesion(Usuario usuario) {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attributes.getRequest().getSession(true);
-        session.setAttribute("usuariosession", usuario);
+        session.setAttribute("usuario", usuario);
     }
 
     @Override

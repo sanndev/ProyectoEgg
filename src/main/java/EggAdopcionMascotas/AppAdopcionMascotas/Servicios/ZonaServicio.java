@@ -14,11 +14,9 @@ public class ZonaServicio {
 
     public List<Zona> listarZonas() {
         return zonaRepositorio.findAll();
-
     }
 
     public Zona devolverZona(String id) {
         return zonaRepositorio.getById(id);
     }
-
 }

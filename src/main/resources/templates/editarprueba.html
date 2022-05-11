@@ -17,7 +17,7 @@
         <div class="container mt-3 border d-block w-50 justify-content-center">
             <p th:if="${error != null }" th:text="${error}" style="color: red;"> </p>
             <p th:if="${succes != null}" th:text="${succes}" style="color: green;"></p>
-            <form class="row g-3" th:action="@{/usuario/editar" method="POST" th:object="${usuario}">
+            <form class="row g-3" th:action="@{/usuario/editar}" method="POST" th:object="${usuario}">
                 <legend class="text-center mt-4">Formulario de registro</legend>
 
                 <input type="hidden" name="id" th:field="*{id}">

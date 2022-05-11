@@ -6,6 +6,7 @@ import EggAdopcionMascotas.AppAdopcionMascotas.Errores.ErroresServicio;
 import EggAdopcionMascotas.AppAdopcionMascotas.Servicios.UsuarioServicio;
 import EggAdopcionMascotas.AppAdopcionMascotas.Servicios.ZonaServicio;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,19 +55,19 @@ public class UsuarioControlador {
 
     }
 
-//    @GetMapping("/editar")
-//    public String editar(@RequestParam String password2,Model modelo, String id) {
-//
-//        try {
-//            Optional<Usuario> usuario = usuarioServicio.buscarPorId(id);
-//            modelo.addAttribute("usuario", usuario);
-//        } catch (Exception e) {
-//            e.getMessage();
-//        }
-//
-//        List<Zona> zonas = zonaServicio.listarZonas();
-//        modelo.addAttribute("zonas", zonas);
-//        return "editarprueba";
-//
-//    }
+    @GetMapping("/editar")
+    public String editar(HttpSession session, Model modelo) {
+
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        try {
+            modelo.addAttribute("usuario", usuario);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+
+        List<Zona> zonas = zonaServicio.listarZonas();
+        modelo.addAttribute("zonas", zonas);
+        return "editarprueba";
+
+    }
 }
