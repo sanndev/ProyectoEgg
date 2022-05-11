@@ -1057,8 +1057,6 @@ a.ui-button:active,
 /* Icons
 ----------------------------------*/
 
-<<<<<<< HEAD
-=======
 /* states and images */
 .ui-icon {
 	width: 16px;
@@ -1093,7 +1091,6 @@ a.ui-button:active,
 	background-image: url("images/ui-icons_777777_256x240.png");
 }
 
->>>>>>> de6351ce199dd8e622ea2a1c866aa9db5fe72186
 /* positioning */
 .ui-icon-blank { background-position: 16px 16px; }
 .ui-icon-caret-1-n { background-position: 0 0; }

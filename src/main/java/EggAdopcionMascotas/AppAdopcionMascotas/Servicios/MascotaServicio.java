@@ -41,14 +41,14 @@ public class MascotaServicio {
 
    }
    
-   public Optional<Mascota> ModificarMascota(String MascotaID)
-   {
-       Optional<Mascota> mascota = repomascota.findById(MascotaID);
-       
-       if(mascota.get() != null)
-       
-       return mascota;
-   }
+//   public Optional<Mascota> ModificarMascota(String MascotaID)
+//   {
+//       Optional<Mascota> mascota = repomascota.findById(MascotaID);
+//       
+//       if(mascota.get() != null)
+//       
+//       return mascota;
+//   }
    
    public void ElimarMascota(String MascotaID)
    {
@@ -58,11 +58,11 @@ public class MascotaServicio {
    }
    
    
-   public List<Mascota> GetListMascota()
-   {
-   
-   
-   }
+//   public List<Mascota> GetListMascota()
+//   {
+//   
+//   
+//   }
    
    
    private void validate()

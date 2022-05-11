@@ -1,1 +1,5 @@
+<<<<<<< HEAD
+Hola soy ulises Chustek :) feo
+=======
 Hola soy Santiago
+>>>>>>> de6351ce199dd8e622ea2a1c866aa9db5fe72186
