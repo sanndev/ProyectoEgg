@@ -50,20 +50,6 @@ public class MascotaServicio {
 
     }
 
-    public boolean ElimarMascota(String MascotaID) {
-        Optional<Mascota> mascota = repomascota.findById("08bbf0cc-7ffc-4cc5-bc2b-dcde99b9e15f");
-
-        try {
-            repomascota.delete(mascota.get());
-            System.out.println("Eliminando mascota");
-        } catch (Exception ex) {
-
-            System.out.println(ex.toString());
-        }
-
-        return true;
-    }
-
     public List<Mascota> GetAllMascotas() {
         List<Mascota> mascotas = repomascota.findAll();
 
@@ -75,6 +61,7 @@ public class MascotaServicio {
     }
 
     public String CreateImage(String dir, MultipartFile file) {
+
         if (!file.isEmpty()) {
             try {
                 Path directorio, rutag1;

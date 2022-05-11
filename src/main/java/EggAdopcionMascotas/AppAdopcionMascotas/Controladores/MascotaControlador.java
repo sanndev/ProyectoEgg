@@ -3,16 +3,13 @@ package EggAdopcionMascotas.AppAdopcionMascotas.Controladores;
 import EggAdopcionMascotas.AppAdopcionMascotas.Entidades.Mascota;
 import EggAdopcionMascotas.AppAdopcionMascotas.Entidades.Usuario;
 import EggAdopcionMascotas.AppAdopcionMascotas.Servicios.MascotaServicio;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,24 +41,15 @@ public class MascotaControlador {
         return "Home";
     }
 
+    @GetMapping("")
+    public String ViewUserPanel() {
+        return "UserPanel";
+    }
+
     @GetMapping("/mostrarmascotas")
     @ResponseBody
     public List<Mascota> MostrarMascotas() {
         return mservicio.GetAllMascotas();
-    }
-
-    @DeleteMapping("eliminar/{id}")
-    @ResponseBody
-    public List<String> EliminarMascota(@PathVariable String id) {
-
-        System.out.println(id);
-        System.out.println("ELIMINAR MASCOTA");
-        mservicio.ElimarMascota(id);
-        List<String> nex = new ArrayList<String>();
-
-        nex.add("Mascota");
-
-        return nex;
     }
 
 }

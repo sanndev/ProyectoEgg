@@ -5,6 +5,7 @@ import EggAdopcionMascotas.AppAdopcionMascotas.Entidades.Zona;
 import EggAdopcionMascotas.AppAdopcionMascotas.Errores.ErroresServicio;
 import EggAdopcionMascotas.AppAdopcionMascotas.Servicios.UsuarioServicio;
 import EggAdopcionMascotas.AppAdopcionMascotas.Servicios.ZonaServicio;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/usuario")
@@ -34,14 +36,16 @@ public class UsuarioControlador {
 
         return "SignUp";
     }
-    
-    @GetMapping("/panel")
-    public String panel() {
 
+    @GetMapping("/user-result")
+    @ResponseBody
+    public List<Usuario> ReturnUser(@RequestParam String id) {
 
-        return "UserPanel";
+        List<Usuario> buffer = new ArrayList<Usuario>();
+        buffer.add(usuarioServicio.buscarUsuarioPorId(id));
+        return buffer;
     }
-    
+
     @PostMapping("/registrar")
     public String registrar(@RequestParam String password2,
             Model modelo,
