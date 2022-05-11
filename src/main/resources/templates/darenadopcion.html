@@ -8,8 +8,6 @@
     <!------------ mobile metas ------------>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-    <!------------ site metas -------------->
-    <title>Dar en Adopción</title>
     <meta
       name="keywords"
       content="mascotas,perros,gatos,adopción,adopción mascotas,adoptar una mascota,adoptar un perro,adoptar un gato,consejos para dar en adopción, adoptar,pasos para dar en adoptción una mascota,Consejos para dar en adopción una mascota, consejos, perros, mascotas"
@@ -25,7 +23,7 @@
     <!------------- style css -------------->
     <link rel="stylesheet" type="text/css" th:href="@{/css/estilos-dar-en-adopcion.css}" href="../static/css/estilos-dar-en-adopcion.css" />
     <!------------- Responsive-------------->
-    <link rel="stylesheet"th:href="@{/css/responsive-dar-en-adopcion.css}" href="../static/css/responsive-dar-en-adopcion.css" />
+    <link rel="stylesheet"th:href="@{/css/responsive.css}" href="../static/css/responsive.css" />
     <!-----------Estilo acordeón y formulario---------->
     <link
       rel="stylesheet"
@@ -34,15 +32,7 @@
     
   </head>
   <body>
-    <!------------ Loader- prueba ---------------->
-    <!-- !-- <div id="loader-container">
-      <div class="loader"></div>
-      <div class="loader2"></div>
-      <div clas="hidden"></div>
-    </div> --> 
-    <!------------ fin loader -------------------->
-
-  <!------------ Sección consejos dar en Adopción ---------------->
+    <header th:replace="layouts/header :: header"></header>
     <div class="consejos_dar_adopcion">
       <div class="container">
         <div class="row">
@@ -136,128 +126,121 @@
   <!------------ Fin Sección consejos dar en Adopción ---------------->
 
   <!-----------------Formulario Registro de mascota------------->
-    <div class="registro_seccion">
-    	<div class="container">
-        <!-------*Título Form------->
-				<div class="row">
-					<div class="col-sm-12">
-						<h3 class="titulo_registro"><strong><span style="color: #F36A6E;">Completá los datos de la mascota</span> </strong></h3>
-					</div>
-				</div>
-        <!-------*Caja form------->
-				<div class="caja_registro">
-						<div class="input_main">
-						  <div class="container">
-<!--th:object--><form th:action="@{/mascota/registrar}" th:object="${mascota}" id="contact-form" method="POST">
-								  <div class="form-group">
-                  <!-------*Nombre mascota------->
-<!-- th:field -->  	  <input th:field="*{nombre}"type="text" required class="nombre-mascota" placeholder="Nombre de la mascota" name="Name">
-                  <!-------*Select Tipo de mascota------->						
-				              <div class="row">	
-					                <div class="col">
-						               <label for="list_tipo_animal" class="lista-select">Tipo de Animal:</label> 
-						              </div>		
-					                <div class="col">
-					                </div>
-                          <div class="col">
-<!-- th:field -->           <select required hidden tabindex="0" th:field="*{tipoAnimal}">
-                                 <option class="option selected focus " value="PERRO">Perro</option>
-                                 <option class="option " value="GATO">Gato</option>
-                                 <option class="option " value="OTRO">Otro</option>                              
-                            </select>
-                          </div>
-								      </div>
-                  <!-------*Select Sexo------->     
-								      <div class="row">	
-					                <div class="col">
-						               <label for="list_sexo" class="lista-select">Sexo:</label> 
-						              </div>		
-					                <div class="col">
-                          </div>
-                          <div class="col">
-<!-- th:field -->           <select required hidden tabindex="0" th:field="*{sexo}">    
-                              <option class="option selected focus " value="HEMBRA">Hembra</option>
-                              <option class="option " value="MACHO">Macho</option>
-                            </select>
-								          </div>
-								      </div>
-                  <!-------*Select Tamaño------->
-								      <div class="row">	
-					                <div class="col">
-						                <label for="list_tamaño" class="lista-select">Tamaño:</label> 
-						              </div>		
-					                <div class="col">
-                          </div>
-                          <div class="col">
-<!-- th:field -->           <select required hidden tabindex="0" th:field="*{tamanioMascota}">    
-                              <option class="option selected focus " value="PEQUENIA">Pequeño</option>
-                              <option class="option " value="MEDIANA">Mediano</option>
-                              <option class="option " value="GRANDE">Grande</option>
-                            </select>						            
-								          </div>
-					            </div>
-                  <!-------*Select Edad------->
-								      <div class="row">	
-					                <div class="col">
-						                 <label for="list_tamaño" class="lista-select">Edad:</label> 
-						              </div>		
-					                <div class="col">
-                          </div>
-                          <div class="col">						              
-<!-- th:field -->             <select required hidden tabindex="0" th:field="*{edadMascota}">    
-                              <option class="option selected focus " value="CACHORRA">Cachorro</option>
-                              <option class="option " value="JOVEN">Jóven</option>
-                              <option class="option " value="ADULTA">Adulto</option>
-                            </select>
-								          </div>
-					            </div>
-                  <!-------*Insertar foto------->
-								         <!-- <label>Archivo:</label><br> <input type="file">  <br> -->
-								      <div class="row">	
-					                <div class="col-sm-12">
-						                <label for="foto" class="lista-select"> &#128071 Su mejor foto &#128525:</label> 
-						              </div>		
-					                <div class="col-sm-12">
-						                <div class="nice-select" id="foto" tabindex="0">
-<!-- th:field -->              <input type="file" id="boton_file" th:field="*{foto}">
-					                  </div>
-								          </div>
-					            </div>	  
-                  <!-------*Descripción mascota------->
-								      <div class="row">	
-					                <div class="col-sm-12">
-<!-- th:field -->						 <textarea class="descripcion-registro" placeholder="Descripción" rows="3" id="comment" name="Massage" th:field="*{descripcion}"></textarea> 
-						              </div>					
-					            </div>
-                  <!-------*Botón registro------->								 
-							        <div class="send_btn">
-							          <button type="button" class="main_bt" id="boton_send"><a href="#">Registrar</a></button>
-							        </div> 
-                  </div>
-							  </form>                   
-						  </div>
-					  </div>				
-				</div>				
-		
-			
-		</div>
-	  </div>
-  <!-------------Fin Formulario Registro de mascota------------->
+  <div class="registro_seccion">
+      <div class="container">
+          <!-------*Título Form------->
+          <div class="row">
+              <div class="col-sm-12">
+                  <h3 class="titulo_registro"><strong><span style="color: #F36A6E;">Completá los datos de la mascota</span> </strong></h3>
+              </div>
+          </div>
+          <!-------*Caja form------->
+          <div class="caja_registro">
+              <div class="input_main">
+                  <div class="container">
+                      <form id="contact-form" th:action="@{../mascota/registrar}"  method="GET" >
 
-    <!-- Scrips prueba loader -->
-      <!-- <script>
-      window.onload = function(){
-        var loader-container= document.
-      }
-    </script> -->
+                                  </form>                   
+                              </div>
+                          </div>				
+                  </div>				
 
 
-    <!--------------------------Scrips acordeón ---------------------------->
-    <script th:src="@{/js/acordion-dar-en-adopcion.js}" src="../static/js/acordion-dar-en-adopcion.js"></script>
+              </div>
+          </div>
+
+  <form th:action="@{/mascota/publicar-mascota}" method="POST" enctype="multipart/form-data" th:object="${mascota}">
+            <div class="form-group">
+                <input  required class="nombre-mascota" placeholder="Nombre de la mascota" name="nombre">
+                <div class="row">	
+                    <div class="col">
+                        <label for="list_tipo_animal" class="lista-select" >Tipo de Animal:</label> 
+                    </div>		
+                    <div class="col">
+
+                    </div>
+                    <div class="col">
+                        <select required hidden tabindex="0">
+
+                            <option class="option selected focus " value="Perro" name="tipoAnimal">Perro</option>
+                            <option class="option " value="Gato">Gato</option>
+                            <option class="option " value="Otro">Otro</option>
+
+                        </select>
+                    </div>
+                    
+                    <div class="row">	
+                                  <div class="col">
+                                      <label for="sexo" class="lista-select" >Sexo:</label> 
+                                  </div>		
+                                  <div class="col">
+                                      <select required tabindex="0" th:field="*{sexo}">
+                                          <option th:each="item : ${T(EggAdopcionMascotas.AppAdopcionMascotas.Enums.Sexo).values()}" th:value="${item}" th:text="${item.nombre}"></option>
+                                      </select>
+                                      
+                                  </div>
+                              </div>
+
+                              <div class="row">	
+                                  <div class="col">
+                                      <label for="list_tamaño" class="lista-select" >Tamaño:</label> 
+                                  </div>		
+                                  <div class="col">
+                                      <select required tabindex="0" th:field="*{TamanioMascota}">
+                                          <option th:each="item : ${T(EggAdopcionMascotas.AppAdopcionMascotas.Enums.TamanioMascota).values()}" th:value="${item}" th:text="${item.nombre}"></option>
+                                      </select>
+                                  </div>
+                              </div>
+
+                              <div class="row">	
+                                  <div class="col">
+                                      <label for="list_tamaño" class="lista-select" >Edad:</label> 
+                                  </div>		
+                                  <div class="col">
+                                      <select required tabindex="0" th:field="*{EdadMascota}">
+                                          <option th:each="item : ${T(EggAdopcionMascotas.AppAdopcionMascotas.Enums.EdadMascota).values()}" th:value="${item}" th:text="${item.nombre}"></option>
+                                      </select>
+                                  </div>
+                              </div>
+                    
+                              <div class="row">	
+                                  <div class="col">
+                                      <label for="list_tamaño" class="lista-select" >Tipo De Mascota:</label> 
+                                  </div>		
+                                  <div class="col">
+                                      <select required tabindex="0" th:field="*{TipoAnimal}">
+                                          <option th:each="item : ${T(EggAdopcionMascotas.AppAdopcionMascotas.Enums.TipoAnimal).values()}" th:value="${item}" th:text="${item.nombre}"></option>
+                                      </select>
+                                  </div>
+                              </div>
+
+                              <div class="row">	
+                                  <div class="col-sm-12">
+                                      <label for="foto" class="lista-select" name="foto"> &#128071 Su mejor foto &#128525:</label> 
+                                  </div>		
+                                  <div class="col-sm-12">
+                                      <div class="nice-select" id="foto" tabindex="0">
+                                          <input type="file" id="boton_file" name="file">
+                                      </div>
+                                  </div>
+                                  <div class="row">	
+                                      <div class="col-sm-12">
+                                          <textarea class="descripcion-registro" placeholder="Descripción" rows="3" id="comment" name="descripcion"></textarea> 
+                                      </div>					
+                                  </div>
+                                  
+                </div>
+            </div>
+                <button type="submit"  value="Dar Mascota"></button>
+        </form>
+    
+    <footer th:replace="layouts/footer :: footer"></footer>
+    <script th:src="@{/js/acordion.js}" src="../static/js/acordion.js"></script>
     <!------------------------Scripts formulario registro ------------------>
-    <script th:src="@{/js/jquery.min-dar-en-adopcion.js}" src="../static/js/jquery.min-dar-en-adopcion.js"></script>
-    <script th:src="@{/js/plugin-dar-en-adopcion.js}" src="../static/js/plugin-dar-en-adopcion.js"></script>
-    <script th:src="@{/js/custom-dar-en-adopcion}" src="../static/js/custom-dar-en-adopcion.js"></script>
+    <script th:src="@{/js/plugin.js}" src="../static/js/plugin.js"></script>
+    <script th:src="@{/js/custom.js}" src="../static/js/custom.js"></script>
+    <script th:src="@{/js/jquery.min.js}" src="../static/js/jquery.min.js"></script>
+
 
   </body>
 </html>

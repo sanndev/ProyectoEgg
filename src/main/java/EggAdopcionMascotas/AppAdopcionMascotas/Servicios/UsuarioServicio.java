@@ -166,7 +166,7 @@ public class UsuarioServicio implements UserDetailsService { // implements UserD
     public void agregarUsuarioALaSesion(Usuario usuario) {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attributes.getRequest().getSession(true);
-        session.setAttribute("usuariosession", usuario);
+        session.setAttribute("usuario", usuario);
     }
 
     @Override

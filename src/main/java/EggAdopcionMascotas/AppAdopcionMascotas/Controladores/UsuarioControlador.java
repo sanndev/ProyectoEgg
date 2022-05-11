@@ -33,7 +33,14 @@ public class UsuarioControlador {
 
         return "SignUp";
     }
+    
+    @GetMapping("/panel")
+    public String panel() {
 
+
+        return "UserPanel";
+    }
+    
     @PostMapping("/registrar")
     public String registrar(@RequestParam String password2,
             Model modelo,

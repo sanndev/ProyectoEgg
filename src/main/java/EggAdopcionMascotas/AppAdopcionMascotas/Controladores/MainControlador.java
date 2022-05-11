@@ -20,13 +20,9 @@ public class MainControlador {
 
     @GetMapping("")
     public String index() {
-        return "facundo";
+        return "Home";
     }
     
-        @GetMapping("ayuda")
-    public String ayuda() {
-        return "facundo";
-    }
 
     @GetMapping("plugins")
     @CrossOrigin(origins="http//localhost:8080")
@@ -39,12 +35,6 @@ public class MainControlador {
         params.put("password","password");
 
         return params;
-    }
-
-    @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
-    @GetMapping("/homeprueba")
-    public String home() {
-        return "homeprueba";
     }
 
 }
