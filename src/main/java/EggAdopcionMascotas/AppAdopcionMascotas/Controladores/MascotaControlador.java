@@ -73,14 +73,19 @@ public class MascotaControlador {
     }
 
     
-    @DeleteMapping("eliminarmascota/{id}")
+    @DeleteMapping("eliminar/{id}")
     @ResponseBody
-    public String EliminarMascota(String MascotaID)
+    public List<String> EliminarMascota(@PathVariable String id)
     {
     
-        mservicio.ElimarMascota(MascotaID);
+        System.out.println(id);
+        System.out.println("ELIMINAR MASCOTA");
+        mservicio.ElimarMascota(id);
+        List<String> nex = new ArrayList<String>();
         
-        return "Hola";
+        nex.add("Mascota");
+        
+        return nex;
     }
     
 }
