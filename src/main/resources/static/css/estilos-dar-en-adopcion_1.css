@@ -10,7 +10,7 @@
 
 
 /*--------------------------------------------------------------------- Archivos importados ---------------------------------------------------------------------*/
-@import url(nice-select-dar-en-adopcion.css);
+@import url(nice-select.css);
 
 /*--------------------------------------------------------------------- Atributos generales ---------------------------------------------------------------------*/
 
@@ -351,7 +351,7 @@ a {
 .registro_seccion{
 	width: 100%;
 	float: left;
-	background-image: url(../static/img/form-adopcion.jpg);
+	background-image: url(../img/form-adopcion.jpg);
 	height: auto;
 	padding-top: 55px;
 	background-size: 100%;
