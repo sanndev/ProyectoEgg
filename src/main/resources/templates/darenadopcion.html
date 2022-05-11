@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <!-- <link rel="icon" th:href="@{/images/patita.png" sizes="any" /> -->
+    <title>Dar en adopción</title>
     <!------------ mobile metas ------------>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
@@ -17,13 +18,15 @@
       content="Consejos para dar a una mascota en adopción. Registrate y te ayudamos a conectar con la mejor familia adoptiva"
     />
     <meta name="author" content="" />
-    <link rel="icon" th:href="@{/img/dar_adopcion.png}" href="../static/img/dar_adopcion.png" sizes="any" />
+
+    <link rel="icon" th:href="@{/images/patita.png}" sizes="any" />
     <!------------- bootstrap css ---------->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!------------- style css -------------->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/estilos-dar-en-adopcion.css}" href="../static/css/estilos-dar-en-adopcion.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/estilos-dar-en-adopcion.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/nice-select-dar-en-adopcion.css}"/>
     <!------------- Responsive-------------->
-    <link rel="stylesheet"th:href="@{/css/responsive.css}" href="../static/css/responsive.css" />
+    <link rel="stylesheet" th:href="@{/css/responsive-dar-en-adopcion.css}"/>
     <!-----------Estilo acordeón y formulario---------->
     <link
       rel="stylesheet"
@@ -235,12 +238,11 @@
         </form>
     
     <footer th:replace="layouts/footer :: footer"></footer>
-    <script th:src="@{/js/acordion.js}" src="../static/js/acordion.js"></script>
+    <!--------------------------Scrips acordeón ---------------------------->
+    <script th:src="@{/js/acordion-dar-en-adopcion.js}"></script>
     <!------------------------Scripts formulario registro ------------------>
-    <script th:src="@{/js/plugin.js}" src="../static/js/plugin.js"></script>
-    <script th:src="@{/js/custom.js}" src="../static/js/custom.js"></script>
-    <script th:src="@{/js/jquery.min.js}" src="../static/js/jquery.min.js"></script>
-
-
+    <script th:src="@{/js/jquery.min-dar-en-adopcion.js}" ></script>
+    <script th:src="@{/js/plugin-dar-en-adopcion.js}"></script>
+    <script th:src="@{/js/custom-dar-en-adopcion.js}" ></script>
   </body>
 </html>
