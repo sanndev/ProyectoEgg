@@ -12,7 +12,7 @@ public class MainControlador {
 
     @GetMapping("")
     public String index() {
-        return "Home";
+        return "index";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
