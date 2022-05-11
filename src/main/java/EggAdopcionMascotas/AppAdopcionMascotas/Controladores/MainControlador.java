@@ -22,19 +22,4 @@ public class MainControlador {
     public String index() {
         return "Home";
     }
-    
-
-    @GetMapping("plugins")
-    @CrossOrigin(origins="http//localhost:8080")
-     @ResponseBody
-    public Map<String, Object> plugins() {
-        
-        
-        Map<String, Object> params = new HashMap<String,Object>();
-        params.put("email","email");
-        params.put("password","password");
-
-        return params;
-    }
-
 }

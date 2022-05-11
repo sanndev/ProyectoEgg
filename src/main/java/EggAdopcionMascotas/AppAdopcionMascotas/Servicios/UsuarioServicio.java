@@ -42,32 +42,6 @@ public class UsuarioServicio implements UserDetailsService { // implements UserD
 
     }
 
-    public void modificarUsuario(String id, String nombre, String apellido, String telefono, String email, String password, String password2, String idZona) throws ErroresServicio {
-
-//        Zona zona = zonaServicio.devolverZona(idZona);
-//        validarDatos(nombre, apellido, telefono, email, password, password2, zona);
-//
-//        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
-//
-//        if (!respuesta.isPresent()) {
-//
-//            throw new ErroresServicio("No se encontró el usuario solicitado");
-//
-//        }
-//
-//        Usuario usuario = respuesta.get();
-//        usuario.setNombre(nombre);
-//        usuario.setApellido(apellido);
-//        usuario.setTelefono(telefono);
-//        usuario.setEmail(email);
-//
-//        String passwordEncriptado = new BCryptPasswordEncoder().encode(password);
-//        usuario.setPassword(passwordEncriptado);
-//
-//        usuario.setZona(zona);
-//
-//        usuarioRepositorio.save(usuario);
-    }
 
     public void deshabilitarUsuario(String id) throws ErroresServicio {
 
@@ -169,6 +143,11 @@ public class UsuarioServicio implements UserDetailsService { // implements UserD
         session.setAttribute("usuario", usuario);
     }
 
+    public Usuario buscarUsuarioPorId(String id)
+    {
+        return usuarioRepositorio.findById(id).orElse(null);
+    }
+    
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 

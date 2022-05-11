@@ -45,7 +45,7 @@ public class MascotaServicio {
     repomascota.save(mascota);
    }
    
-<<<<<<< HEAD
+
    public Optional<Mascota> ModificarMascota(String MascotaID)
    {
        Optional<Mascota> mascota = repomascota.findById(MascotaID);
@@ -59,25 +59,7 @@ public class MascotaServicio {
  
    }
 
-   
-   public boolean ElimarMascota(String MascotaID)
-   {
-        Optional<Mascota> mascota = repomascota.findById("08bbf0cc-7ffc-4cc5-bc2b-dcde99b9e15f");
-        
-        try
-        {
-           repomascota.delete(mascota.get());
-           System.out.println("Eliminando mascota");
-        }catch(Exception ex)
-        {
-        
-            System.out.println(ex.toString());
-        }
-        
-        return true;
-   }
-   
-<<<<<<< HEAD
+
    public List<Mascota> GetAllMascotas()
    {
        List<Mascota> mascotas = repomascota.findAll();
@@ -89,7 +71,6 @@ public class MascotaServicio {
        
       return mascotas;
    }
-=======
    
    
    

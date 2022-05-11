@@ -65,27 +65,16 @@ public class MascotaControlador {
         return "Home";
     }
 
+    @GetMapping("")
+    public String ViewUserPanel() 
+    {
+        return "UserPanel";
+    }
     
     @GetMapping("/mostrarmascotas")
     @ResponseBody
-    public List<Mascota> MostrarMascotas() {
+    public List<Mascota> MostrarMascotas() 
+    {
         return mservicio.GetAllMascotas();
     }
-
-    
-    @DeleteMapping("eliminar/{id}")
-    @ResponseBody
-    public List<String> EliminarMascota(@PathVariable String id)
-    {
-    
-        System.out.println(id);
-        System.out.println("ELIMINAR MASCOTA");
-        mservicio.ElimarMascota(id);
-        List<String> nex = new ArrayList<String>();
-        
-        nex.add("Mascota");
-        
-        return nex;
-    }
-    
 }
