@@ -6,19 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/front")
+public class Frontcontroler {
 
-@RequestMapping("")
-public class MainControlador {
-
-    @GetMapping("")
+    @GetMapping("/configvista")
     public String index() {
-        return "Home";
+        return "ConfigVista";
     }
-
-    @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
-    @GetMapping("/facundo")
-    public String facundo() {
-        return "facundo";
-    }
+    
 
 }
