@@ -47,8 +47,6 @@ public class UsuarioControlador {
             @ModelAttribute("usuario") Usuario usuario
     ) {
         try {
-
-            System.out.println("Usuario: " + usuario.toString());
             usuarioServicio.registrarUsuario(password2, usuario);
 
             modelo.addAttribute("succes", "Usuario registrado correctamente");
