@@ -51,19 +51,12 @@ public class UsuarioControlador {
             Model modelo,
             @ModelAttribute("usuario") Usuario usuario) {
         try {
-
             usuarioServicio.registrarUsuario(password2, usuario);
-            modelo.addAttribute("succes", "Usuario registrado correctamente");
-
         } catch (ErroresServicio e) {
-
             modelo.addAttribute("error", e.getMessage());
             modelo.addAttribute("usuario", usuario);
-
         }
-
         return "SignUp";
-
     }
 
     @GetMapping("/editar")
@@ -78,7 +71,7 @@ public class UsuarioControlador {
 
         List<Zona> zonas = zonaServicio.listarZonas();
         modelo.addAttribute("zonas", zonas);
-        return "editarprueba";
+        return "ConfigVista";
 
     }
 }
