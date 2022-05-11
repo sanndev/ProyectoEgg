@@ -35,6 +35,8 @@ public class Mascota {
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
 
+    private String nombre;
+    
     private String descripcion;
 
     @Enumerated(EnumType.STRING)
@@ -47,8 +49,7 @@ public class Mascota {
     @ManyToOne
     private Usuario usuario;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Foto foto;
+    private String foto;
 
     @Enumerated(EnumType.STRING)
     private TamanioMascota tamanioMascota;

@@ -1,5 +1,6 @@
 package EggAdopcionMascotas.AppAdopcionMascotas;
 
+import EggAdopcionMascotas.AppAdopcionMascotas.Servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,28 +15,34 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class Seguridad extends WebSecurityConfigurerAdapter {
 
-    // Autenticacion y autorizacion
-//    @Autowired
-//    private UsuarioServicio usuarioServicio;
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(usuarioServicio).passwordEncoder(new BCryptPasswordEncoder());
-//    }
+    @Autowired
+    private UsuarioServicio usuarioServicio;
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(usuarioServicio).passwordEncoder(new BCryptPasswordEncoder());
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/css/*", "/img/*", "/js/*").permitAll();
 
-//                .and().formLogin()
-//                .loginPage("/login")
-//                .usernameParameter("username")
-//                .passwordParameter("password")
-//                .defaultSuccessUrl("/")
-//                .loginProcessingUrl("/logincheck")
-//                .failureUrl("/login?error=error")
-//                .permitAll()
-//                .and().logout()
-//                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/login");
+   http.authorizeRequests()
+           .antMatchers("/css/*", "/img/*", "/js/*")
+                .permitAll()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/UserPanel") // chequear que esto sea asi al final de todo
+                .loginProcessingUrl("/logincheck")
+                .failureUrl("/login?error=error") // ???
+                .permitAll()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login");
+
     }
 
 }
