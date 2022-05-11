@@ -45,7 +45,7 @@ public class MascotaServicio {
     repomascota.save(mascota);
    }
    
-<<<<<<< HEAD
+
    public Optional<Mascota> ModificarMascota(String MascotaID)
    {
        Optional<Mascota> mascota = repomascota.findById(MascotaID);
@@ -77,7 +77,6 @@ public class MascotaServicio {
         return true;
    }
    
-<<<<<<< HEAD
    public List<Mascota> GetAllMascotas()
    {
        List<Mascota> mascotas = repomascota.findAll();
@@ -89,8 +88,7 @@ public class MascotaServicio {
        
       return mascotas;
    }
-=======
-   
+
    
    
   public String CreateImage(String dir, MultipartFile file) {
