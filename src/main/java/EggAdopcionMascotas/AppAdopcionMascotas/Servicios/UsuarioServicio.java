@@ -45,19 +45,25 @@ public class UsuarioServicio implements UserDetailsService {
         return usuarioRepositorio.findById(id).orElse(null);
     }
 
-    public Usuario modificarUsuario(String password2, Usuario usuario) throws ErroresServicio {
+    public Usuario modificarUsuario(String id, String password2) throws Exception {
 
-        validarDatos(password2, usuario);
-        Optional<Usuario> respuesta = usuarioRepositorio.findById(usuario.getId());
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+            validarDatos(password2, usuario);
+            String passwordEncriptado = new BCryptPasswordEncoder().encode(usuario.getPassword());
+            usuario.setPassword(passwordEncriptado);
 
-        if (!respuesta.isPresent()) {
+            usuario.setNombre(usuario.getNombre());
+            usuario.setApellido(usuario.getApellido());
+            usuario.setEmail(usuario.getEmail());
+            usuario.setZona(usuario.getZona());
+            usuario.setTelefono(usuario.getTelefono());
 
-            throw new ErroresServicio("No se encontró el usuario solicitado");
+            return usuarioRepositorio.save(usuario);
         }
-        String passwordEncriptado = new BCryptPasswordEncoder().encode(usuario.getPassword());
-        usuario.setPassword(passwordEncriptado);
-        return usuarioRepositorio.save(usuario);
 
+        return null;
     }
 
     public void deshabilitarUsuario(String id) throws ErroresServicio {

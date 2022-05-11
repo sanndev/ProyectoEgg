@@ -12,34 +12,50 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
         <!---------------------------------------------------------------------------------------------------------->
 
-
         <h1 class= "text-center mb-3">Configuración de la cuenta</h1>
-        <div class= "container w-50 d-block border"> 
+        <form class="row g-3" th:action="@{/usuario/editarUsuario}" method="POST" th:object="${usuario}">
+          <input type="hidden" name="id" th:field="*{id}">
+          <div class= "container w-50 d-block border"> 
             <div class="col-md-3 w-100 mb-3 mt-3">
                 <label for="inputName" class="form-label">Nombre</label>
-                <input type="text" class="form-control" aria-label="First name">
+                <input type="text" class="form-control" aria-label="First name" th:field="*{nombre}">
             </div>
             <div class="col-md-3 w-100 mb-3" >
                 <label for="inputName2" class="form-label">Apellido</label>
-                <input type="text" class="form-control  disabled"  aria-label="Last name">
+                <input type="text" class="form-control  disabled"  aria-label="Last name" th:field="*{apellido}">
             </div>
             <div class="col-md-3 w-100">
                 <label for="inputEmail4" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail4">
-            </div>
-            <div class="col-md-3 w-100">
-                <label for="inputPassword4" class="form-label">Password</label>
-                <input type="password" class="form-control" id="inputPassword4">
+                <input type="email" class="form-control" id="inputEmail4" th:field="*{email}">
             </div>
             <div class="col-md-3 w-100 mb-3">
-                <label for="InputTel" class="form-label">Número de Teléfono</label>
-                <input type="tel" class="form-control" id="InputTel" placeholder="381-xxx-xxx">
+              <label for="InputTel" class="form-label">Número de Teléfono</label>
+              <input type="tel" class="form-control" id="InputTel" th:field="*{telefono}">
+          </div>
+            <div class="col-md-3 w-100">
+                <label for="inputPassword4" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="inputPassword4" th:field="*{password}">
             </div>
+
+            <div class="col-md-3 w-100">
+              <label class="form-label">Repetir Contraseña</label>
+              <input type="password" class="form-control" th:value="${password2}">
+          </div>
+            
             <div class="col-md-3 w-100 mb-3">
                 <label for="InputZone" class="form-label">Zona</label>
-                <input type="text" class="form-control" id="InputTel" placeholder="San Miguel de Tucuman">
+                <!-- " -->
+                <select class="form-select" th:field="*{zona}" >
+                  <option th:each="item : ${zonas}" th:value="${item.id}" th:text="${item.descripcion}"></option>
+                </select>
+                <!--  -->
+            </div>
+              <div class="col-12 d-flex justify-content-center w-100 mb-3">
+                <button class="btn btn-primary" type="submit">Editar</button>
             </div>
         </div>
+        </form>
+        
         <!-- <h2 class= "text-center mb-3 mt-3">Mis Mascotas</h2>
         <div class= "container w-75 d-block border">
           <table class="table">

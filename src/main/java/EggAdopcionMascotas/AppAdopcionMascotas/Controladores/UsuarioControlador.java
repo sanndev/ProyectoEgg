@@ -3,6 +3,7 @@ package EggAdopcionMascotas.AppAdopcionMascotas.Controladores;
 import EggAdopcionMascotas.AppAdopcionMascotas.Entidades.Usuario;
 import EggAdopcionMascotas.AppAdopcionMascotas.Entidades.Zona;
 import EggAdopcionMascotas.AppAdopcionMascotas.Errores.ErroresServicio;
+import EggAdopcionMascotas.AppAdopcionMascotas.Repositorios.UsuarioRepositorio;
 import EggAdopcionMascotas.AppAdopcionMascotas.Servicios.UsuarioServicio;
 import EggAdopcionMascotas.AppAdopcionMascotas.Servicios.ZonaServicio;
 import java.util.ArrayList;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/usuario")
 public class UsuarioControlador {
 
+    @Autowired
+    private UsuarioRepositorio userRepositorio;
     @Autowired
     private UsuarioServicio usuarioServicio;
 
@@ -74,4 +77,7 @@ public class UsuarioControlador {
         return "ConfigVista";
 
     }
+
+    
+
 }
