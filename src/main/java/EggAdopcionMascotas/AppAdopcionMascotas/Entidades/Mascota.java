@@ -6,16 +6,8 @@ import EggAdopcionMascotas.AppAdopcionMascotas.Enums.Sexo;
 import EggAdopcionMascotas.AppAdopcionMascotas.Enums.TamanioMascota;
 import EggAdopcionMascotas.AppAdopcionMascotas.Enums.TipoAnimal;
 import java.util.Date;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
+
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -35,6 +27,8 @@ public class Mascota {
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
 
+    private String nombre;
+
     private String descripcion;
 
     @Enumerated(EnumType.STRING)
@@ -47,8 +41,7 @@ public class Mascota {
     @ManyToOne
     private Usuario usuario;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Foto foto;
+    private String foto;
 
     @Enumerated(EnumType.STRING)
     private TamanioMascota tamanioMascota;

@@ -43,9 +43,11 @@ async function cargarMascotas(offset,limit){
     console.log("offset: " + offset)
     console.log("limit: " + limit)
 
+    //const response = await fetch("http://localhost:8080/mascota/mostrarmascotas").then((response)=>response.json()).then((data)=>{console.log(data)});
+
   const row = document.querySelector(".misColumnas");
 
-  const request = await fetch('https://jsonplaceholder.typicode.com/photos', {
+  const request = await fetch('mascota/mostrarmascotas', {
     method: 'GET',
     headers: {
           'Accept': 'application/json',
@@ -55,15 +57,19 @@ async function cargarMascotas(offset,limit){
   });
   const mascotas = await request.json(); //lo transforman a json
 
-  for(let mascota of mascotas){  
+  var i = 1;
+
+  for(let mascota of mascotas){
+
+     console.log(mascotas);
 
     spinner.style.display = "block";
 
-    var i = mascota.id;
-
     if(i >= offset && i<=limit){
-            
-        console.log(mascota);
+
+        //console.log(mascota);
+
+        //mascota.nombre,mascota.edadMascota,mascota.tipoAnimal,mascota.sexo,mascota.tamanioMascota,mascota.usuario,mascota.descripcion,mascota.foto
 
         const col = document.createElement('div')
         col.className ="col"
@@ -71,20 +77,20 @@ async function cargarMascotas(offset,limit){
 
         const card = document.createElement('div')
         card.className ="card shadow-sm"
-        
+
         const card_body = document.createElement('div')
         card_body.className = "card-body"
 
         const img = document.createElement('img')
-        img.src = mascota.url //cambiar luego de prueba con placeHolder
+        img.src = "/upload/"+mascota.foto //cambiar luego de prueba con placeHolder
 
         const nombre = document.createElement('h5')
         nombre.className = "card-title text-center text-dark"
-        nombre.textContent = mascota.title  //cambiar luego de prueba con placeHolder
+        nombre.textContent = mascota.nombre  //cambiar luego de prueba con placeHolder
 
         const descripcion = document.createElement('p')
         descripcion.className = "card-title text-center text-dark"
-        descripcion.textContent = mascota.descripcion  //cambiar luego de prueba con placeHolder
+        descripcion.textContent = "" //cambiar luego de prueba con placeHolder
 
         const botones = document.createElement('div')
         botones.className = "d-flex justify-content-center align-items-center"
@@ -97,7 +103,8 @@ async function cargarMascotas(offset,limit){
         boton1.textContent = "Leer Mas"
         boton1.setAttribute("data-toggle","modal")
         boton1.setAttribute("data-target","#exampleModalCenter")
-        boton1.setAttribute("onclick",'CargarUnaMascota(' + mascota.id + ')') //cambiar por el metodo de consulta
+        boton1.setAttribute("onclick",'CargarUnaMascota(`'+mascota.id+'`)') //cambiar por el metodo de consulta
+        console.log(mascota.id)
 
         //const boton2 = document.createElement('a')
         //boton2.className = "btn btn-primary ms-2"
@@ -117,6 +124,8 @@ async function cargarMascotas(offset,limit){
 
     }
 
+    i++;
+
   }
 
   spinner.style.display = "none";
@@ -135,37 +144,51 @@ function removerChildNodes(parent){
 //carga una sola mascota
 async function CargarUnaMascota(id){
 
-    const requestMascota = await fetch('https://jsonplaceholder.typicode.com/photos/'+ id +'', {
+    const requestMascotaUna = await fetch('mascota/mostrarmascotasid?id='+ id, {
       method: 'GET',
       headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
       }
-  
+
     });
-    const mascota = await requestMascota.json(); //lo transforman a json
 
-    console.log("---------------------------------------------------------------")
+    const mascotaUna = await requestMascotaUna.json(); //lo transforman a json
 
-    console.log(mascota)
+    for(let mas of mascotaUna){
 
-    showModal(mascota.title,mascota.title,mascota.url) //modificar a la hora de agregar los datos de la mascota
+    console.log(mas)
+
+    console.log("---------------------------------------")
+
+     console.log(mas)
+
+     showModal(mas.nombre,
+                     mas.edadMascota,
+                     mas.tipoAnimal,
+                     mas.sexo,
+                     mas.tamanioMascota,
+                     mas.usuario,
+                     mas.descripcion,
+                     mas.foto) //modificar a la hora de agregar los datos de la mascota
+
+     }
 
 
 }
 
 //Metodo para mostrar ventana modal
-const showModal = (title, description, imagen, callback) => {
+const showModal = (nombre, edad, tipo, sexo, tamanio, usuario_id ,descripcion ,imagen, callback) => {
 yesBtnLabel = 'Yes';
 noBtnLabel = 'Cancel';
-    
+
 /**
- * 
- * @param {string} title 
- * @param {string} description content of modal body 
- * @param {string} imagen content of modal body 
+ *
+ * @param {string} title
+ * @param {string} description content of modal body
+ * @param {string} imagen content of modal body
  * @param {function} callback callback function when click Yes button
- * 
+ *
  */
 
     var modalWrap = null;
@@ -175,27 +198,28 @@ noBtnLabel = 'Cancel';
     modalWrap.remove();
   }
 
+
   modalWrap = document.createElement('div');
   modalWrap.innerHTML = `
 
     <div class="modal fade" tabindex="1">
-      
+
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header bg-light">
-            <h5 class="modal-title text-center w-100">${title}</h5>
+            <h5 class="modal-title text-center w-100">${nombre}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body d-flex w-100">
-            <img src="${imagen}" alt="" width="300" height="300">
+            <img src="/upload/${imagen}" alt="" width="300" height="300">
             <div class="container d-block">
 
               <div class="d-flex">
-                <h4 class="me-3"><strong>Sexo:</strong> Macho</h4>
+                <h4 class="me-3"><strong>Sexo:</strong>${sexo}</h4>
               </div>
 
               <div class="d-flex">
-                <h4 class="me-3"><strong>Tamaño:</strong> Mediano</h4>
+                <h4 class="me-3"><strong>Tamaño:</strong>${tamanio}</h4>
               </div>
 
               <div class="d-flex">
@@ -203,13 +227,10 @@ noBtnLabel = 'Cancel';
               </div>
 
               <div class="d-block">
-                <h4 class="me-3"><strong>Descripcion:</strong> </h4> <h5 class="descripcion_mascota"><span>Lorem 
-                ipsum dolor sit amet consectetur adipisicing elit. Quo, repellendus! Eveniet, fugit officia 
-                ccusantium possimus debitis explicabo quam aperiam dicta.</span> </h5>
+                <h4 class="me-3"><strong>Descripcion:</strong> </h4> <h5 class="descripcion_mascota"><span>${descripcion}</span> </h5>
               </div>
 
             </div>
-            <!--<p>${description}</p>-->
           </div>
           <div class="modal-footer bg-light">
 
@@ -237,7 +258,7 @@ noBtnLabel = 'Cancel';
   modal.show();
 
   //mostrarTutorialBasico();
-  
+
 }
 
 function mostrarTutorialBasico(){
@@ -246,8 +267,8 @@ function mostrarTutorialBasico(){
     body.innerHTML = `
 
         <div class="spotlight">
-      
-      
+
+
         </div>
 
         <h1>Estos Son los Contactos<br>del Actual Dueño</h1>
@@ -265,6 +286,7 @@ function mostrarTutorialBasico(){
 
 
 }
+
 
 
 
